@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="406.0" prefWidth="600.0" style="-fx-background-color: #4A83C2;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.LoginController">
+   <children>
+      <AnchorPane layoutX="300.0" layoutY="1.0" prefHeight="413.0" prefWidth="300.0" style="-fx-background-color: white;">
+         <children>
+            <TextField fx:id="benutzername" layoutX="39.0" layoutY="175.0" prefHeight="30.0" prefWidth="222.0" promptText="Benutzername" />
+            <PasswordField fx:id="passwort" layoutX="39.0" layoutY="231.0" prefHeight="30.0" prefWidth="222.0" promptText="Passwort" />
+            <Button fx:id="button" layoutX="147.0" layoutY="293.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #4A83C2;" text="Anmelden" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="label" layoutX="65.0" layoutY="87.0" prefHeight="49.0" prefWidth="165.0" text="ANMELDUNG" textFill="#4a83c2">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="39.0" layoutY="268.0" prefHeight="17.0" prefWidth="222.0" textFill="#f50202" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="label" layoutX="47.0" layoutY="278.0" text="HÄNDLER SYSTEM" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imageView" fitHeight="174.0" fitWidth="276.0" layoutX="71.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../images1/2022-05-13%20(11).png" />
+         </image>
+      </ImageView>
+      <Accordion />
+      <Accordion />
+      <Accordion />
+      <ToolBar layoutX="-320.0" layoutY="87.0" prefHeight="40.0" prefWidth="200.0">
+        <items>
+          <Button mnemonicParsing="false" text="Button" />
+        </items>
+      </ToolBar>
+      <CheckBox layoutX="-132.0" layoutY="79.0" mnemonicParsing="false" text="CheckBox" />
+      <MenuButton layoutX="-241.0" layoutY="149.0" mnemonicParsing="false" text="MenuButton">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </MenuButton>
+      <RadioButton layoutX="-273.0" layoutY="199.0" mnemonicParsing="false" text="RadioButton" />
+      <Spinner layoutX="-216.0" layoutY="368.0" />
+      <SplitMenuButton layoutX="-262.0" layoutY="356.0" mnemonicParsing="false" text="SplitMenuButton">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </SplitMenuButton>
+   </children>
+</AnchorPane>
