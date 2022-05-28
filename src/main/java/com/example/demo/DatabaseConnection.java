@@ -22,9 +22,9 @@ public class DatabaseConnection {
     public Connection getConnection() {
 
         // db parameters
-        String databaseName = "dilanur";
+        String databaseName = "mydb";
         String databaseUser = "root";
-        String databasePassword = "Asko1234";
+        String databasePassword = "dila1234";
         String url = "jdbc:mysql://localhost:3306/" + databaseName;
 
         try {
@@ -46,7 +46,7 @@ public class DatabaseConnection {
 
         Connection connectDb = this.getConnection();
 
-        String verifyLogin = "SELECT count(1) FROM personal WHERE benutzername =  '" + username + "' AND passwort = '" + password + "'" ;
+        String verifyLogin = "SELECT count(1) FROM Personal WHERE benutzername =  '" + username + "' AND passwort = '" + password + "'" ;
 
         try {
             Statement statement = connectDb.createStatement();

@@ -23,7 +23,7 @@
          <children>
             <TextField fx:id="benutzername" layoutX="39.0" layoutY="175.0" prefHeight="30.0" prefWidth="222.0" promptText="Benutzername" />
             <PasswordField fx:id="passwort" layoutX="39.0" layoutY="231.0" prefHeight="30.0" prefWidth="222.0" promptText="Passwort" />
-            <Button fx:id="button" layoutX="147.0" layoutY="293.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #4A83C2;" text="Anmelden" textFill="WHITE">
+            <Button fx:id="button" layoutX="148.0" layoutY="312.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #4A83C2;" text="Anmelden" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -33,7 +33,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="39.0" layoutY="268.0" prefHeight="17.0" prefWidth="222.0" textFill="#f50202" />
+            <Label fx:id="falschPass" layoutX="39.0" layoutY="268.0" prefHeight="30.0" prefWidth="222.0" textFill="#f50202" />
          </children>
       </AnchorPane>
       <Label fx:id="label" layoutX="47.0" layoutY="278.0" text="HÄNDLER SYSTEM" textFill="WHITE">

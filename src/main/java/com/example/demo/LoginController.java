@@ -1,4 +1,5 @@
 package com.example.demo;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -26,19 +27,22 @@ public class LoginController implements Initializable {
 
 
 
-    //private ImageView myImageView
-    //Image myImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("loginIcon.jpeg")));
+
     @FXML
     private  ImageView imageView;
-    //Image myImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("2022-05-13%20(11).png")));
-    //Image myImage;
-
+    //Image myImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("../../../../images1/2022-05-13%20(11).png")));
+    @FXML
+    private  ImageView imageView1;
     @FXML
     private Label label;
     @FXML
     private TextField benutzername;
     @FXML
     private PasswordField passwort;
+    @FXML
+    private Label falschPass;
+
+    public Label getFalschPass(){return falschPass;}
 
     public LoginController() {
         //if("C:\\Users\\Eylül\\IdeaProjects\\demo\\src\\main\\images1"!=null)myImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("C:\\\\Users\\\\Eylül\\\\IdeaProjects\\\\demo\\\\src\\\\main\\\\images1")));
@@ -57,12 +61,12 @@ public class LoginController implements Initializable {
         return passwort;
     }
 
-    public void login() throws  IOException{
+    public void login(ActionEvent event) throws  IOException{
         if(benutzername.getText().isBlank() ==false && passwort.getText().isBlank() == false){
             validateLogin();
         }
         else{
-            label.setText("Bitte geben Sie ihre \nBenutzername und Passwort ein.");
+            falschPass.setText("Bitte geben Sie ihre Benutzername und\nPasswort ein.");
         }
 
 
@@ -78,7 +82,7 @@ public class LoginController implements Initializable {
             HelloApplication m = new HelloApplication();
             m.changeScene("homepage.fxml");
         }else {
-            label.setText("Falsch Passwort. \nVersuchen Sie wieder.!!!");
+            falschPass.setText("Falsch Passwort oder Benutzername.\nVersuchen Sie wieder!");
         }
 
     }
@@ -86,8 +90,9 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+            //imageView.setImage(myImage);
 
-            File file=new File(("@../../../../images1/2022-05-13%20(11).png"));
+            File file=new File(("../../../../images1/indir.jpg"));
             Image image=new Image(file.toURI().toString());
             imageView.setImage(image);
 
