@@ -1,4 +1,7 @@
 package com.example.demo;;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.IOException;
 import java.sql.*;
 import java.util.Set;
@@ -66,6 +69,20 @@ public class DatabaseConnection {
         }
         return false;
 
+    }
+    public static ObservableList<Personal> getDatausers(){
+        ObservableList<Personal> list = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps =conn.prepareStatement("select * from personal");
+            ResultSet rs=ps.executeQuery();
+
+            while (rs.next()){
+                list.add(new Personal(Integer.parseInt(rs.getString("idPersonal")),rs.getString("vorname")),rs.getString("nachname"),rs.getString("benutzername"),rs.getString("passwort"),Integer.parseInt(rs.getString("idNummer")));
+            }
+        }catch (Exception e){
+
+        }
+        return list;
     }
 
 

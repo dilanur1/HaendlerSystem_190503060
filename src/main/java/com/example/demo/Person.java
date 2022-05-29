@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class Person {
     private String idNummer;
-    private String name;
+    private String vorname;
     private String nachname;
-    private Date geburtsdatum;
-    private String geschlecht;
-    private Adress adresse;
-    private String telnummer;
-
+    //private Date geburtsdatum;
+   // private String geschlecht;
+    //private Adress adresse;
+    //private String telnummer;
+/*
     public Adress getAdresse() {
         return adresse;
     }
@@ -27,12 +27,29 @@ public class Person {
         this.telnummer = telnummer;
     }
 
+    public Date getGeburtsdatum() {
+        return geburtsdatum;
+    }
+
+    public void setGeburtsdatum(Date geburtsdatum) {
+        this.geburtsdatum = geburtsdatum;
+    }
+
+    public String getGeschlecht() {
+        return geschlecht;
+    }
+
+    public void setGeschlecht(String geschlecht) {
+        this.geschlecht = geschlecht;
+    }
+    */
+
     public String getName() {
-        return name;
+        return vorname;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.vorname = name;
     }
 
     public String getNachname() {
@@ -51,19 +68,7 @@ public class Person {
         this.idNummer = idNummer;
     }
 
-    public Date getGeburtsdatum() {
-        return geburtsdatum;
-    }
 
-    public void setGeburtsdatum(Date geburtsdatum) {
-        this.geburtsdatum = geburtsdatum;
-    }
 
-    public String getGeschlecht() {
-        return geschlecht;
-    }
 
-    public void setGeschlecht(String geschlecht) {
-        this.geschlecht = geschlecht;
-    }
 }

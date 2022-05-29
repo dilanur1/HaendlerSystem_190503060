@@ -28,11 +28,15 @@
       <ComboBox fx:id="cbpersonal" layoutX="24.0" layoutY="257.0" prefWidth="150.0" promptText="PERSONAL" />
       <ComboBox fx:id="cbkunde" layoutX="24.0" layoutY="308.0" prefWidth="150.0" promptText="KUNDE" />
       <ComboBox fx:id="cbeinstellung" layoutX="24.0" layoutY="358.0" prefHeight="25.0" prefWidth="150.0" promptText="EINSTELLUNGEN" />
-      <TableView fx:id="tablepersonal" layoutX="261.0" layoutY="145.0" prefHeight="200.0" prefWidth="143.0">
-        <columns>
-          <TableColumn fx:id="vorname" prefWidth="75.0" text="vorname" />
-          <TableColumn fx:id="nachname" prefWidth="75.0" text="nachname" />
-        </columns>
+      <TableView fx:id="tablepersonal" layoutX="124.0" layoutY="145.0" prefHeight="200.0" prefWidth="562.0">
+         <columns>
+            <TableColumn fx:id="col_idpersonal" prefWidth="75.0" text="idPersonal" />
+            <TableColumn fx:id="col_vorname" prefWidth="75.0" text="vorname" />
+            <TableColumn fx:id="col_nachname" prefWidth="75.0" text="nachname" />
+            <TableColumn fx:id="col_benutzername" prefWidth="75.0" text="benutzername" />
+            <TableColumn fx:id="col_pass" prefWidth="75.0" text="passwort" />
+            <TableColumn fx:id="col_idNummer" prefWidth="75.0" text="idNummer" />
+         </columns>
       </TableView>
       <Button fx:id="personalgoruntule" layoutX="314.0" layoutY="383.0" mnemonicParsing="false" text="personalgoruntule" />
    </children>

@@ -2,14 +2,22 @@ package com.example.demo;
 import java.util.ArrayList;
 
 public class Personal extends Person{
-    private int personalnummer;
+    private int idPersonal;
     private String benutzername;
     private String passwort;
     private ArrayList<Kunde> betreuteKunde;
 
-    public Personal(String name,String nachname,int personalnummer){
+    public Personal(int idPersonal,String vorname,String nachname,String benutzername,String passwort){
         super();
-        this.personalnummer=personalnummer;
+        this.idPersonal=idPersonal;
+        this.benutzername=benutzername;
+        this.passwort=passwort;
+
+
+    }
+
+    public Personal(int idPersonal, String vorname) {
+        super();
     }
 
     public void setBenutzername(String benutzername) {
