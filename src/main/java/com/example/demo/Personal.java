@@ -1,11 +1,16 @@
 package com.example.demo;
 import java.util.ArrayList;
-import java.util.Date;
+
 public class Personal extends Person{
     private int personalnummer;
     private String benutzername;
     private String passwort;
     private ArrayList<Kunde> betreuteKunde;
+
+    public Personal(String name,String nachname,int personalnummer){
+        super();
+        this.personalnummer=personalnummer;
+    }
 
     public void setBenutzername(String benutzername) {
         this.benutzername = benutzername;

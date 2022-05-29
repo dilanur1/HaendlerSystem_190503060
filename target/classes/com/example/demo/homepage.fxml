@@ -1,48 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="490.0" prefWidth="705.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HomepageController">
+<AnchorPane prefHeight="490.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HomepageController">
    <children>
-      <ChoiceBox layoutX="23.0" layoutY="283.0" prefHeight="35.0" prefWidth="168.0" style="-fx-background-color: #4A84C2;" />
-      <Label layoutX="29.0" layoutY="287.0" prefHeight="27.0" prefWidth="116.0" text="PERSONAL" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="158.0" fitWidth="163.0" layoutX="23.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="144.0" fitWidth="142.0" layoutX="36.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images1/2022-05-13%20(12).png" />
          </image>
       </ImageView>
-      <Label layoutX="195.0" layoutY="26.0" text="HÄNDLER SYSTEM STARTSEITE" textFill="#4a84c2">
+      <Label fx:id="startseite" layoutX="195.0" layoutY="40.0" text="HÄNDLER SYSTEM STARTSEITE" textFill="#4a84c2">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="23.0" layoutY="221.0" prefHeight="35.0" prefWidth="168.0" style="-fx-background-color: #4A84C2;" />
-      <ChoiceBox layoutX="23.0" layoutY="405.0" prefHeight="35.0" prefWidth="168.0" style="-fx-background-color: #4A84C2;" />
-      <ChoiceBox layoutX="23.0" layoutY="346.0" prefHeight="35.0" prefWidth="168.0" style="-fx-background-color: #4A84C2;" />
-      <Label layoutX="29.0" layoutY="225.0" prefHeight="27.0" prefWidth="116.0" text="PRODUKT" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="29.0" layoutY="350.0" prefHeight="27.0" prefWidth="116.0" text="KUNDE" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="22.0" layoutY="409.0" prefHeight="27.0" prefWidth="150.0" text=" EINSTELLUNGEN" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
+      <Accordion layoutX="24.0" layoutY="188.0" />
+      <ComboBox fx:id="cbprodukt" layoutX="24.0" layoutY="206.0" prefWidth="150.0" promptText="PRODUKT" />
+      <ComboBox fx:id="cbpersonal" layoutX="24.0" layoutY="257.0" prefWidth="150.0" promptText="PERSONAL" />
+      <ComboBox fx:id="cbkunde" layoutX="24.0" layoutY="308.0" prefWidth="150.0" promptText="KUNDE" />
+      <ComboBox fx:id="cbeinstellung" layoutX="24.0" layoutY="358.0" prefHeight="25.0" prefWidth="150.0" promptText="EINSTELLUNGEN" />
+      <TableView fx:id="tablepersonal" layoutX="261.0" layoutY="145.0" prefHeight="200.0" prefWidth="143.0">
+        <columns>
+          <TableColumn fx:id="vorname" prefWidth="75.0" text="vorname" />
+          <TableColumn fx:id="nachname" prefWidth="75.0" text="nachname" />
+        </columns>
+      </TableView>
+      <Button fx:id="personalgoruntule" layoutX="314.0" layoutY="383.0" mnemonicParsing="false" text="personalgoruntule" />
    </children>
 </AnchorPane>

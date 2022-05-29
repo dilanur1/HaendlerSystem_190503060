@@ -17,31 +17,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="406.0" prefWidth="600.0" style="-fx-background-color: #4A83C2;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.LoginController">
+<AnchorPane prefHeight="490.0" prefWidth="700.0" style="-fx-background-color: #4A83C2;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.LoginController">
    <children>
-      <AnchorPane layoutX="300.0" layoutY="1.0" prefHeight="413.0" prefWidth="300.0" style="-fx-background-color: white;">
+      <AnchorPane layoutX="351.0" prefHeight="491.0" prefWidth="350.0" style="-fx-background-color: white;">
          <children>
-            <TextField fx:id="benutzername" layoutX="39.0" layoutY="175.0" prefHeight="30.0" prefWidth="222.0" promptText="Benutzername" />
-            <PasswordField fx:id="passwort" layoutX="39.0" layoutY="231.0" prefHeight="30.0" prefWidth="222.0" promptText="Passwort" />
-            <Button fx:id="button" layoutX="148.0" layoutY="312.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #4A83C2;" text="Anmelden" textFill="WHITE">
+            <TextField fx:id="benutzername" layoutX="40.0" layoutY="195.0" prefHeight="30.0" prefWidth="271.0" promptText="Benutzername">
                <font>
-                  <Font size="14.0" />
+                  <Font size="13.0" />
+               </font></TextField>
+            <PasswordField fx:id="passwort" layoutX="40.0" layoutY="246.0" prefHeight="30.0" prefWidth="271.0" promptText="Passwort">
+               <font>
+                  <Font size="13.0" />
+               </font></PasswordField>
+            <Button fx:id="button" layoutX="197.0" layoutY="337.0" mnemonicParsing="false" onAction="#login" onKeyTyped="#login" onMouseClicked="#login" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #4A83C2;" text="Anmelden" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
                </font>
             </Button>
-            <Label fx:id="label" layoutX="65.0" layoutY="87.0" prefHeight="49.0" prefWidth="165.0" text="ANMELDUNG" textFill="#4a83c2">
+            <Label fx:id="label" layoutX="73.0" layoutY="113.0" prefHeight="49.0" prefWidth="204.0" text="ANMELDUNG" textFill="#4a83c2">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="falschPass" layoutX="39.0" layoutY="268.0" prefHeight="30.0" prefWidth="222.0" textFill="#f50202" />
+            <Label fx:id="falschPass" layoutX="40.0" layoutY="290.0" prefHeight="30.0" prefWidth="271.0" textFill="#f50202" />
          </children>
       </AnchorPane>
-      <Label fx:id="label" layoutX="47.0" layoutY="278.0" text="HÄNDLER SYSTEM" textFill="WHITE">
+      <Label fx:id="label" layoutX="41.0" layoutY="334.0" text="HÄNDLER SYSTEM" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <ImageView fx:id="imageView" fitHeight="174.0" fitWidth="276.0" layoutX="71.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imageView" fitHeight="218.0" fitWidth="222.0" layoutX="71.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../images1/2022-05-13%20(11).png" />
          </image>

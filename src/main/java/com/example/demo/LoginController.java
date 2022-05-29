@@ -62,10 +62,9 @@ public class LoginController implements Initializable {
     }
 
     public void login(ActionEvent event) throws  IOException{
-        if(benutzername.getText().isBlank() ==false && passwort.getText().isBlank() == false){
+        if(benutzername.getText().isBlank() ==false && passwort.getText().isBlank() == false) {
             validateLogin();
-        }
-        else{
+        } else{
             falschPass.setText("Bitte geben Sie ihre Benutzername und\nPasswort ein.");
         }
 
@@ -92,7 +91,7 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
             //imageView.setImage(myImage);
 
-            File file=new File(("../../../../images1/indir.jpg"));
+            File file=new File(("indir.jpg"));
             Image image=new Image(file.toURI().toString());
             imageView.setImage(image);
 

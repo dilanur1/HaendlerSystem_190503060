@@ -15,6 +15,7 @@ public class HelloApplication extends Application {
         stg = primaryStage;
         primaryStage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+
         //primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("Anmeldung");
         primaryStage.setScene(new Scene(root));

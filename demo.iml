@@ -37,5 +37,14 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.1" level="project" />
     <orderEntry type="library" name="MySQL" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.29" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-java-8.0.29.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
