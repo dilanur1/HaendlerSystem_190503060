@@ -7,11 +7,11 @@ public class Zahlungsinfo {
     private String typ;
     private Date datum;
     private double betrag;
-    private Kunde zahlenderKunde=new Kunde();
+    //private Kunde zahlenderKunde=new Kunde(int idNummer, String vorname, String nachname);
 
-    public Zahlungsinfo(Kunde zahlenderKunde) {
-        this.zahlenderKunde = zahlenderKunde;
-    }
+    //public Zahlungsinfo(Kunde zahlenderKunde) {
+        //this.zahlenderKunde = zahlenderKunde;
+    //}
 
     public void setBetrag(double betrag) {
         this.betrag = betrag;
@@ -37,13 +37,13 @@ public class Zahlungsinfo {
         this.id = id;
     }
 
-    public Kunde getZahlenderKunde() {
-        return zahlenderKunde;
-    }
+    //public Kunde getZahlenderKunde() {
+        //return zahlenderKunde;
+    //}
 
-    public void setZahlenderKunde(Kunde zahlenderKunde) {
-        this.zahlenderKunde = zahlenderKunde;
-    }
+    //public void setZahlenderKunde(Kunde zahlenderKunde) {
+        //this.zahlenderKunde = zahlenderKunde;
+    //}
 
     public String getTyp() {
         return typ;

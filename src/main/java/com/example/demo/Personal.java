@@ -5,51 +5,54 @@ public class Personal extends Person{
     private int idPersonal;
     private String benutzername;
     private String passwort;
-    private ArrayList<Kunde> betreuteKunde;
-
-    public Personal(int idPersonal,String vorname,String nachname,String benutzername,String passwort){
-        super();
-        this.idPersonal=idPersonal;
-        this.benutzername=benutzername;
-        this.passwort=passwort;
+    //rivate ArrayList<Kunde> betreuteKunde;
 
 
+    public Personal(String idNummer, String vorname, String nachname,
+                    String geburtsdatum, String geschlecht, String adress,
+                    String telefonnummer, int idPersonal, String benutzername,
+                    String passwort) {
+        super(idNummer, vorname, nachname, geburtsdatum, geschlecht, adress, telefonnummer);
+        this.idPersonal = idPersonal;
+        this.benutzername = benutzername;
+        this.passwort = passwort;
     }
-
-    public Personal(int idPersonal, String vorname) {
-        super();
-    }
+/*
+    public void setVorname(String vorname){this.vorname=vorname;}
+    public String getVorname(){return vorname;}
+    public void setNachname(String nachname){this.nachname=nachname;}
+    public String getNachname(){return nachname;}
 
     public void setBenutzername(String benutzername) {
         this.benutzername = benutzername;
     }
 
-    public void setBetreuteKunde(ArrayList<Kunde> betreuteKunde) {
-        this.betreuteKunde = betreuteKunde;
-    }
+    //public void setBetreuteKunde(ArrayList<Kunde> betreuteKunde) {
+        //this.betreuteKunde = betreuteKunde;
+    //}
 
     public void setPasswort(String passwort) {
         this.passwort = passwort;
     }
 
     public int getPersonalnummer() {
-        return personalnummer;
+        return idPersonal;
     }
 
     public String getPasswort() {
         return passwort;
     }
 
-    public ArrayList<Kunde> getBetreuteKunde() {
-        return betreuteKunde;
-    }
+    //public ArrayList<Kunde> getBetreuteKunde() {
+        //return betreuteKunde;
+    //}
 
     public String getBenutzername() {
         return benutzername;
     }
 
     public void setPersonalnummer(int personalnummer) {
-        this.personalnummer = personalnummer;
+        this.idPersonal = personalnummer;
     }
 
     public void addProdukt(int pid){}
@@ -79,5 +82,7 @@ public class Personal extends Person{
     public void logout(){}
 
     public void verkaufen(int personalnummer, int pid, int kundenid){}
+
+ */
 
 }

@@ -5,15 +5,21 @@ import java.util.Date;
 public class Kunde extends Person {
     private int kundenid;
     private ArrayList<Personal> betreuendePersonal = new ArrayList();
-    private Zahlungsinfo z;
+    private String z;
     private ArrayList<Produkt> einkaufteProdukt = new ArrayList();
+
+    public Kunde(String idNummer, String vorname, String nachname, String geburtsdatum,String geschlecht,String adresse,String telefonnummer,int kundenid,String z) {
+        super(idNummer, vorname, nachname,geburtsdatum,geschlecht,adresse,telefonnummer);
+        this.kundenid = kundenid;
+        this.z=z;
+    }
 
 
     public void setBetreuendePersonal(ArrayList<Personal> betreuendePersonal) {
         this.betreuendePersonal = betreuendePersonal;
     }
 
-    public void setZ(Zahlungsinfo z) {
+    public void setZ(String z) {
         this.z = z;
     }
 
@@ -38,7 +44,7 @@ public class Kunde extends Person {
         return einkaufteProdukt;
     }
 
-    public Zahlungsinfo getZ() {
+    public String getZ() {
         return z;
     }
 

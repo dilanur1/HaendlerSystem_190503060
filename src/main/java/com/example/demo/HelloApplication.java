@@ -21,8 +21,9 @@ public class HelloApplication extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
-    public void changeScene(String fxml)throws IOException{
-        Parent pane=FXMLLoader.load(getClass().getResource(fxml));
+
+    public void changeScene(String fxml)throws IOException {
+        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         stg.getScene().setRoot(pane);
 
     }

@@ -31,8 +31,7 @@ public class LoginController implements Initializable {
     @FXML
     private  ImageView imageView;
     //Image myImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("../../../../images1/2022-05-13%20(11).png")));
-    @FXML
-    private  ImageView imageView1;
+
     @FXML
     private Label label;
     @FXML
@@ -62,10 +61,9 @@ public class LoginController implements Initializable {
     }
 
     public void login(ActionEvent event) throws  IOException{
-        if(benutzername.getText().isBlank() ==false && passwort.getText().isBlank() == false) {
-            validateLogin();
-        } else{
-            falschPass.setText("Bitte geben Sie ihre Benutzername und\nPasswort ein.");
+        if(benutzername.getText().isBlank() ==false && passwort.getText().isBlank() == false) validateLogin();
+        else{
+            falschPass.setText("Bitte geben Sie ihre Benutzername und Passwort\nein.");
         }
 
 
@@ -81,7 +79,7 @@ public class LoginController implements Initializable {
             HelloApplication m = new HelloApplication();
             m.changeScene("homepage.fxml");
         }else {
-            falschPass.setText("Falsch Passwort oder Benutzername.\nVersuchen Sie wieder!");
+            falschPass.setText("Falsch Passwort oder Benutzername. Versuchen Sie\nwieder!");
         }
 
     }
@@ -91,7 +89,7 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
             //imageView.setImage(myImage);
 
-            File file=new File(("indir.jpg"));
+            File file=new File(("C:\\Users\\Eylül\\IdeaProjects\\demo\\src\\main\\java\\com\\example\\demo\\2022-05-13 (11).png"));
             Image image=new Image(file.toURI().toString());
             imageView.setImage(image);
 

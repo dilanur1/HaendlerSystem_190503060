@@ -1,23 +1,13 @@
-package com.example.demo;;
+package com.example.demo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 
 import java.io.IOException;
 import java.sql.*;
 import java.util.Set;
 import java.sql.Connection;
 import java.sql.DriverManager;
-
-
-
-
-
-//Class.forName("com.mysql.cj.jdbc.Driver");
-//databaseLink = DriverManager.getConnection(url,databaseUser,databasePassword);
-
-
-
-
 
 public class DatabaseConnection {
 
@@ -45,6 +35,7 @@ public class DatabaseConnection {
     }
 
 
+
     public boolean validateLogin(String username,String password) {
 
 
@@ -70,20 +61,98 @@ public class DatabaseConnection {
         return false;
 
     }
-    public static ObservableList<Personal> getDatausers(){
-        ObservableList<Personal> list = FXCollections.observableArrayList();
+
+
+    private static ObservableList<Personal> personalList=FXCollections.observableArrayList();
+
+    public ObservableList getDatausers(){
+        personalList = FXCollections.observableArrayList();
+        personalList.clear();
+        Connection connection=this.getConnection();
+        String sqlkod="SELECT * FROM personal";
+
         try{
-            PreparedStatement ps =conn.prepareStatement("select * from personal");
-            ResultSet rs=ps.executeQuery();
+            Statement ps =connection.createStatement();
+            ResultSet rs = ps.executeQuery(sqlkod);
+
+                while (rs.next()) {
+                    Personal personal=new Personal(rs.getInt("personal_id"),
+                            rs.getString("vorname"), rs.getString("nachname"),
+                            rs.getString("benutzername"), rs.getString("passwort"));
+                    personalList.add(personal);
+                }
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+
+        return personalList;
+    }
+
+
+    private static ObservableList<Produkt> produktList=FXCollections.observableArrayList();
+
+    public ObservableList getDataprodukts(){
+        produktList = FXCollections.observableArrayList();
+        produktList.clear();
+        Connection connection=this.getConnection();
+        String sqlkod="SELECT * FROM produkt";
+
+        try{
+            Statement ps =connection.createStatement();
+            ResultSet rs=ps.executeQuery(sqlkod);
 
             while (rs.next()){
-                list.add(new Personal(Integer.parseInt(rs.getString("idPersonal")),rs.getString("vorname")),rs.getString("nachname"),rs.getString("benutzername"),rs.getString("passwort"),Integer.parseInt(rs.getString("idNummer")));
+                Produkt produkt=new Produkt(rs.getInt("produkt_id"),rs.getDouble("preis"),
+                        rs.getString("kategorie"),rs.getInt("garantiezeit"),
+                        rs.getString("modell"),rs.getString("lagerbestand"),rs.getDouble("höhe"),
+                        rs.getDouble("breite"),rs.getDouble("länge"));
+                produktList.add(produkt);
             }
         }catch (Exception e){
-
+            e.printStackTrace();
+            e.getCause();
         }
-        return list;
+
+        return produktList;
     }
+
+
+    private static ObservableList<Kunde> kundenList=FXCollections.observableArrayList();
+
+    public ObservableList getDatakunden(){
+        kundenList = FXCollections.observableArrayList();
+        kundenList.clear();
+        Connection connection=this.getConnection();
+        String sqlkod="SELECT * FROM kunden";
+
+        try{
+            Statement ps =connection.createStatement();
+            ResultSet rs = ps.executeQuery(sqlkod);
+
+            while (rs.next()) {
+                Kunde kunde=new Kunde(rs.getString("id_nummer"),
+                        rs.getString("kunde_vorname"), rs.getString("kunde_nachname"),
+                        rs.getString("kunde_gbdatum"), rs.getString("kunde_geschlecht"),
+                        rs.getString("kunde_adress"),rs.getString("kunde_telnummer"),
+                        rs.getInt("kundenid"), rs.getString("zahlungsinfo"));
+                kundenList.add(kunde);
+            }
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+
+        return kundenList;
+    }
+
+
 
 
 

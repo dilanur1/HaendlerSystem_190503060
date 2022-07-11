@@ -9,7 +9,13 @@ public class Produkt {
     private int garantieZeit;
     private String modell;
     private boolean lagerbestand;
-    private double abmessung;
+    private double höhe;
+    private double breite;
+    private double länge;
+
+    public Produkt(int produkt_id, double preis, String kategorie, int garantiezeit, String modell, String lagerbestand, double höhe, double breite, double länge) {
+
+    }
 
     public void setKategorie(String kategorie) {
         this.kategorie = kategorie;
@@ -53,14 +59,30 @@ public class Produkt {
         return preis;
     }
 
-    public void setAbmessung(double abmessung) {
-        this.abmessung = abmessung;
+    public void setHöhe(double höhe) {
+        this.höhe = höhe;
     }
-    public double getAbmessung() {
-        return abmessung;
+
+    public void setBreite(double breite) {
+        this.breite = breite;
+    }
+
+    public void setLänge(double länge) {
+        this.länge = länge;
     }
 
     public void service(Date datum) {
     }
 
+    public double getHöhe() {
+        return höhe;
+    }
+
+    public double getBreite() {
+        return breite;
+    }
+
+    public double getLänge() {
+        return länge;
+    }
 }

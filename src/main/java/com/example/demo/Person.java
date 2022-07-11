@@ -1,12 +1,25 @@
 package com.example.demo;
 
-import java.util.Date;
-
 public class Person {
     private String idNummer;
     private String vorname;
     private String nachname;
-    //private Date geburtsdatum;
+    private String geburtsdatum;
+    private String geschlecht;
+    private String  adress;
+    private String telefonnummer;
+
+    public Person(String idNummer, String vorname, String nachname, String geburtsdatum, String geschlecht, String adress, String telefonnummer) {
+        this.idNummer = idNummer;
+        this.vorname = vorname;
+        this.nachname = nachname;
+        this.geburtsdatum = geburtsdatum;
+        this.geschlecht = geschlecht;
+        this.adress = adress;
+        this.telefonnummer = telefonnummer;
+    }
+
+//private Date geburtsdatum;
    // private String geschlecht;
     //private Adress adresse;
     //private String telnummer;
