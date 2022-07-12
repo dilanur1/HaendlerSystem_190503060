@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="490.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.einstellungController">
+<AnchorPane prefHeight="490.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.einstellungController">
    <children>
       <Pane prefHeight="490.0" prefWidth="181.0" style="-fx-background-color: #4a84c2;">
          <children>
@@ -24,16 +23,6 @@
                </font>
             </Button>
             <Button layoutX="14.0" layoutY="446.0" mnemonicParsing="false" onAction="#switchToHomepage" prefHeight="24.0" prefWidth="153.0" text="Zurück ">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button layoutX="14.0" layoutY="279.0" mnemonicParsing="false" onAction="#Ausloggen" prefHeight="24.0" prefWidth="153.0" text="Ändern das Passwort">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button layoutX="14.0" layoutY="325.0" mnemonicParsing="false" onAction="#Ausloggen" prefHeight="24.0" prefWidth="153.0" text="Ändern die Benutzername">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

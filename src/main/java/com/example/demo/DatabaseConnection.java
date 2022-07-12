@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 public class DatabaseConnection {
 
     public  static Connection conn ;
+    public static PreparedStatement ps;
 
     public static Connection getConnection() {
 
@@ -23,11 +24,9 @@ public class DatabaseConnection {
 
         try {
             // create a connection to the database
-
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url,databaseUser,databasePassword);
             System.out.println("Connection to MySQL has been established.");
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -37,8 +36,6 @@ public class DatabaseConnection {
 
 
     public boolean validateLogin(String username,String password) {
-
-
         Connection connectDb = this.getConnection();
 
         String verifyLogin = "SELECT count(1) FROM personal WHERE benutzername =  '" + username + "' AND passwort = '" + password + "'" ;
@@ -59,7 +56,6 @@ public class DatabaseConnection {
             e.getCause();
         }
         return false;
-
     }
 
 
@@ -74,21 +70,17 @@ public class DatabaseConnection {
         try{
             Statement ps =connection.createStatement();
             ResultSet rs = ps.executeQuery(sqlkod);
-
                 while (rs.next()) {
-                    Personal personal=new Personal(rs.getInt("personal_id"),
-                            rs.getString("vorname"), rs.getString("nachname"),
+                    Personal personal=new Personal(rs.getString("id_nummer"),
+                            rs.getString("vorname"), rs.getString("nachname"),rs.getString("geburtsdatum"),
+                            rs.getString("geschlecht"),rs.getString("adresse"),rs.getString("telefonnummer"),rs.getInt("personal_id"),
                             rs.getString("benutzername"), rs.getString("passwort"));
                     personalList.add(personal);
                 }
-
-
-
         }catch (Exception e){
             e.printStackTrace();
             e.getCause();
         }
-
         return personalList;
     }
 
@@ -116,9 +108,9 @@ public class DatabaseConnection {
             e.printStackTrace();
             e.getCause();
         }
-
         return produktList;
     }
+
 
 
     private static ObservableList<Kunde> kundenList=FXCollections.observableArrayList();
@@ -141,20 +133,44 @@ public class DatabaseConnection {
                         rs.getInt("kundenid"), rs.getString("zahlungsinfo"));
                 kundenList.add(kunde);
             }
-
-
-
         }catch (Exception e){
             e.printStackTrace();
             e.getCause();
         }
-
         return kundenList;
     }
 
 
 
+    public void löschePersonalFromDB(String id){
+        conn=DatabaseConnection.getConnection();
+        String sql="delete from personal where id_nummer=" +id;
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
 
+    public void löscheProduktFromDB(int id) {
+        conn=DatabaseConnection.getConnection();
+        String sql="delete from produkt where produkt_id=" +id;
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void löscheKundeFromDB(int id) {
+        conn=DatabaseConnection.getConnection();
+        String sql="delete from kunden where kundenid=" +id;
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
 
 
 

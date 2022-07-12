@@ -8,13 +8,21 @@ public class Produkt {
     private String kategorie;
     private int garantieZeit;
     private String modell;
-    private boolean lagerbestand;
+    private String lagerbestand;
     private double höhe;
     private double breite;
     private double länge;
 
     public Produkt(int produkt_id, double preis, String kategorie, int garantiezeit, String modell, String lagerbestand, double höhe, double breite, double länge) {
-
+        pid=produkt_id;
+        this.preis=preis;
+        this.kategorie=kategorie;
+        this.garantieZeit=garantiezeit;
+        this.modell=modell;
+        this.lagerbestand=lagerbestand;
+        this.höhe=höhe;
+        this.breite=breite;
+        this.länge=länge;
     }
 
     public void setKategorie(String kategorie) {
@@ -31,10 +39,10 @@ public class Produkt {
         return garantieZeit;
     }
 
-    public void setLagerbestand(boolean lagerbestand) {
+    public void setLagerbestand(String lagerbestand) {
         this.lagerbestand = lagerbestand;
     }
-    public boolean isLagerbestand() {
+    public String isLagerbestand() {
         return lagerbestand;
     }
 

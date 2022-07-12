@@ -61,6 +61,44 @@ public class kundeController implements Initializable {
         stage.show();
 
     }
+
+    public void kundeAdd(ActionEvent event){
+        try{
+            FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("kundeForm.fxml"));
+            Parent root=(Parent) fxmlLoader.load();
+            Stage stage=new Stage();
+            stage.setTitle("Kundeformular");
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (Exception e){
+        }
+    }
+
+    public void kundeAktualisiereForm(ActionEvent event){
+        try{
+            FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("kundeAktual.fxml"));
+            Parent root=(Parent) fxmlLoader.load();
+            Stage stage=new Stage();
+            stage.setTitle("Kundeformular");
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (Exception e){
+        }
+    }
+
+    public void löscheVonKundeList(ActionEvent event){
+        kundenlist.getItems().removeAll(kundenlist.getSelectionModel().getSelectedItem());
+        //System.out.println(produktlist.getSelectionModel().getSelectedItem().getPid());
+        //DatabaseConnection conn= (DatabaseConnection) DatabaseConnection.getConnection();
+        int id=kundenlist.getSelectionModel().getSelectedItem().getKundenid();
+        //String sql="delete from personal where id_nummer=" +id;
+        DatabaseConnection conn= new DatabaseConnection();
+        conn.löscheKundeFromDB(id);
+    }
+
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         File file1=new File(("C:\\Users\\Eylül\\IdeaProjects\\demo\\src\\main\\java\\com\\example\\demo\\2022-05-13 (11).png"));

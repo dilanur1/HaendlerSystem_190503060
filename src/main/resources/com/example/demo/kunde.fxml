@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="490.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.kundeController">
+<AnchorPane prefHeight="490.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.kundeController">
    <children>
       <Pane prefHeight="490.0" prefWidth="181.0" style="-fx-background-color: #4a84c2;">
          <children>
@@ -19,7 +19,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="personal_add" layoutX="13.0" layoutY="220.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Addiere">
+            <Button fx:id="personal_add" layoutX="13.0" layoutY="220.0" mnemonicParsing="false" onAction="#kundeAdd" prefHeight="25.0" prefWidth="153.0" text="Addiere">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -29,7 +29,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="personal_aktual" layoutX="13.0" layoutY="319.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Aktualisiere">
+            <Button fx:id="personal_aktual" layoutX="13.0" layoutY="319.0" mnemonicParsing="false" onAction="#kundeAktualisiereForm" prefHeight="25.0" prefWidth="153.0" text="Aktualisiere">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -46,17 +46,17 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="kundenlist" layoutX="194.0" layoutY="109.0" prefHeight="365.0" prefWidth="493.0">
+      <TableView fx:id="kundenlist" layoutX="194.0" layoutY="109.0" prefHeight="365.0" prefWidth="639.0">
         <columns>
-          <TableColumn fx:id="col_id" prefWidth="48.0" text="ID-Nummer" />
-          <TableColumn fx:id="col_kvorname" prefWidth="51.0" text="Vorname" />
-            <TableColumn fx:id="col_knachname" prefWidth="48.0" text="Nachname" />
-            <TableColumn fx:id="col_kgbdatum" prefWidth="59.0" text="Geburtsdatum" />
-            <TableColumn fx:id="col_kgeschlecht" prefWidth="45.0" text="Geschlecht" />
-            <TableColumn fx:id="col_kadress" prefWidth="52.0" text="Adress" />
-            <TableColumn fx:id="col_ktel" prefWidth="68.0" text="Telefon" />
-            <TableColumn fx:id="col_kid" prefWidth="50.0" text="Kundenid" />
-            <TableColumn fx:id="col_zahlinfo" prefWidth="109.0" text="Zahlungsinfo" />
+          <TableColumn fx:id="col_id" prefWidth="82.0" text="ID-Nummer" />
+          <TableColumn fx:id="col_kvorname" prefWidth="63.0" text="Vorname" />
+            <TableColumn fx:id="col_knachname" prefWidth="78.0" text="Nachname" />
+            <TableColumn fx:id="col_kgbdatum" prefWidth="91.0" text="Geburtsdatum" />
+            <TableColumn fx:id="col_kgeschlecht" prefWidth="65.0" text="Geschlecht" />
+            <TableColumn fx:id="col_kadress" prefWidth="53.0" text="Adress" />
+            <TableColumn fx:id="col_ktel" prefWidth="54.0" text="Telefon" />
+            <TableColumn fx:id="col_kid" prefWidth="70.0" text="Kundenid" />
+            <TableColumn fx:id="col_zahlinfo" prefWidth="82.0" text="Zahlungsinfo" />
         </columns>
       </TableView>
    </children>

@@ -27,6 +27,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class HomepageController implements Initializable {
+    @FXML
+    private Label anzahlvonprodukt;
 
     private Stage stage;
     private Scene scene;
@@ -66,6 +68,8 @@ public class HomepageController implements Initializable {
         stage.show();
 
     }
+
+
 
 
 

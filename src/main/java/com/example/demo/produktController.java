@@ -65,6 +65,7 @@ public class produktController implements Initializable {
         stage.show();
 
     }
+    //produkt ekleme formunu açar
     public void produktAdd(ActionEvent event){
         try{
             FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("produktForm.fxml"));
@@ -76,6 +77,29 @@ public class produktController implements Initializable {
         }catch (Exception e){
         }
     }
+    //produkt güncelleme formunu açar
+    public void produktAktualisiereForm(ActionEvent event){
+        try{
+            FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("produktAktual.fxml"));
+            Parent root=(Parent) fxmlLoader.load();
+            Stage stage=new Stage();
+            stage.setTitle("Produktformular");
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (Exception e){
+        }
+    }
+
+    public void löscheVonProduktList(ActionEvent event){
+        produktlist.getItems().removeAll(produktlist.getSelectionModel().getSelectedItem());
+        //System.out.println(produktlist.getSelectionModel().getSelectedItem().getPid());
+        //DatabaseConnection conn= (DatabaseConnection) DatabaseConnection.getConnection();
+        int id=produktlist.getSelectionModel().getSelectedItem().getPid();
+        //String sql="delete from personal where id_nummer=" +id;
+        DatabaseConnection conn= new DatabaseConnection();
+        conn.löscheProduktFromDB(id);
+    }
+
 
     ObservableList<Produkt> observableList= FXCollections.observableArrayList();
     @Override

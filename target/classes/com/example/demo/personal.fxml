@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="490.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.personalController">
+<AnchorPane prefHeight="490.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.personalController">
    <children>
       <Pane prefHeight="490.0" prefWidth="181.0" style="-fx-background-color: #4a84c2;">
          <children>
@@ -24,12 +24,12 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="personal_lösche" layoutX="13.0" layoutY="271.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Lösche">
+            <Button fx:id="personal_lösche" layoutX="13.0" layoutY="271.0" mnemonicParsing="false" onAction="#löscheVonPersonalList" prefHeight="25.0" prefWidth="153.0" text="Lösche">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="personal_aktual" layoutX="13.0" layoutY="319.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Aktualisiere">
+            <Button fx:id="personal_aktual" layoutX="13.0" layoutY="319.0" mnemonicParsing="false" onAction="#personalUpdate" prefHeight="25.0" prefWidth="153.0" text="Aktualisiere">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -40,27 +40,18 @@
                </image>
             </ImageView>
          </children></Pane>
-      <TableView fx:id="personallist" layoutX="200.0" layoutY="96.0" prefHeight="351.0" prefWidth="479.0">
+      <TableView fx:id="personallist" layoutX="188.0" layoutY="99.0" prefHeight="351.0" prefWidth="652.0">
          <columns>
-            <TableColumn fx:id="pcol_idnum" prefWidth="44.0" text="ID-Nummer" />
-            <TableColumn fx:id="pcol_vorname" prefWidth="46.0" text="Vorname" />
-            <TableColumn fx:id="pcol_nachname" prefWidth="36.0" text="Nachname" />
-            <TableColumn fx:id="col_pıd" minWidth="0.0" prefWidth="0.0" text="Personal ID" />
-            <TableColumn fx:id="pcol_tel" prefWidth="64.0" text="Tel" />
-            <TableColumn fx:id="col_pass" prefWidth="55.0" text="Passwort">
-               <columns>
-                  <TableColumn fx:id="col_benutzername" prefWidth="116.0" text="Benutzername">
-                     <columns>
-                        <TableColumn fx:id="pcol_geschlecht" prefWidth="46.0" text="Geschlecht">
-                           <columns>
-                              <TableColumn fx:id="pcol_gbdat" prefWidth="46.0" text="Geburtsdatum" />
-                           </columns>
-                        </TableColumn>
-                     </columns>
-                  </TableColumn>
-               </columns>
-            </TableColumn>
-            <TableColumn fx:id="pcol_adres" prefWidth="37.0" text="Adresse" />
+            <TableColumn fx:id="pcol_idnum" prefWidth="74.0" text="ID-Nummer" />
+            <TableColumn fx:id="pcol_vorname" minWidth="6.0" prefWidth="57.0" text="Vorname" />
+            <TableColumn fx:id="pcol_nachname" minWidth="6.0" prefWidth="65.0" text="Nachname" />
+            <TableColumn fx:id="col_pıd" minWidth="0.0" prefWidth="74.0" text="Personal ID" />
+            <TableColumn fx:id="pcol_tel" prefWidth="26.0" text="Tel" />
+            <TableColumn fx:id="pcol_adres" prefWidth="52.0" text="Adresse" />
+            <TableColumn fx:id="col_pass" prefWidth="55.0" text="Passwort" />
+            <TableColumn fx:id="col_benutzername" prefWidth="87.0" text="Benutzername" />
+            <TableColumn fx:id="pcol_geschlecht" minWidth="6.0" prefWidth="72.0" text="Geschlecht" />
+            <TableColumn fx:id="pcol_gbdat" minWidth="5.0" prefWidth="90.0" text="Geburtsdatum" />
          </columns>
       </TableView>
       <Label layoutX="200.0" layoutY="33.0" text="Personal List">

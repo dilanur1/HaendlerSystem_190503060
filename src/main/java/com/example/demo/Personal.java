@@ -17,7 +17,31 @@ public class Personal extends Person{
         this.benutzername = benutzername;
         this.passwort = passwort;
     }
-/*
+
+    public int getIdPersonal() {
+        return idPersonal;
+    }
+
+    public String getBenutzername() {
+        return benutzername;
+    }
+
+    public String getPasswort() {
+        return passwort;
+    }
+
+    public void setIdPersonal(int idPersonal) {
+        this.idPersonal = idPersonal;
+    }
+
+    public void setBenutzername(String benutzername) {
+        this.benutzername = benutzername;
+    }
+
+    public void setPasswort(String passwort) {
+        this.passwort = passwort;
+    }
+    /*
     public void setVorname(String vorname){this.vorname=vorname;}
     public String getVorname(){return vorname;}
     public void setNachname(String nachname){this.nachname=nachname;}

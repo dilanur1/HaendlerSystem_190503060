@@ -9,6 +9,46 @@ public class Person {
     private String  adress;
     private String telefonnummer;
 
+    public String getVorname() {
+        return vorname;
+    }
+
+    public String getGeburtsdatum() {
+        return geburtsdatum;
+    }
+
+    public String getGeschlecht() {
+        return geschlecht;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public String getTelefonnummer() {
+        return telefonnummer;
+    }
+
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+
+    public void setGeburtsdatum(String geburtsdatum) {
+        this.geburtsdatum = geburtsdatum;
+    }
+
+    public void setGeschlecht(String geschlecht) {
+        this.geschlecht = geschlecht;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public void setTelefonnummer(String telefonnummer) {
+        this.telefonnummer = telefonnummer;
+    }
+
     public Person(String idNummer, String vorname, String nachname, String geburtsdatum, String geschlecht, String adress, String telefonnummer) {
         this.idNummer = idNummer;
         this.vorname = vorname;
