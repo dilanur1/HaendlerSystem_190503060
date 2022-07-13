@@ -10,13 +10,12 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
     private static Stage stg;
+
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws IOException{
         stg = primaryStage;
         primaryStage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("Anmeldung");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

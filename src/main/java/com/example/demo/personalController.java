@@ -2,6 +2,8 @@ package com.example.demo;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,6 +55,33 @@ public class personalController implements Initializable {
     private Button personal_lösche;
     @FXML
     private TableView<Personal> personallist;
+    @FXML
+    private TextField filterfield;
+
+    public TextField getFilterfield() {
+        return filterfield;
+    }
+
+    public void setFilterfield(TextField filterfield) {
+        this.filterfield = filterfield;
+    }
+    ObservableList<Personal> dataList;
+
+    public ObservableList<Personal> getDataList() {
+        return dataList;
+    }
+
+    public void setDataList(ObservableList<Personal> dataList) {
+        this.dataList = dataList;
+    }
+
+    public void setPersonallist(TableView<Personal> personallist) {
+        this.personallist = personallist;
+    }
+
+
+
+
 
     public TableColumn<Personal, String> getCol_benutzername() {
         return col_benutzername;
@@ -245,7 +274,7 @@ public class personalController implements Initializable {
             FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("aktualPersonalForm.fxml"));
             Parent root=(Parent) fxmlLoader.load();
             Stage stage=new Stage();
-            stage.setTitle("Personalformular");
+            stage.setTitle("Personal aktulieren formular");
             stage.setScene(new Scene(root));
             stage.show();
         }catch (Exception e){
@@ -265,6 +294,7 @@ public class personalController implements Initializable {
         int selected_id=personallist.getSelectionModel().getSelectedIndex();
         personallist.getItems().remove(selected_id);
         String id=personallist.getSelectionModel().getSelectedItem().getIdNummer();
+        System.out.println(personallist.getSelectionModel().getSelectedItem().getName());
         DatabaseConnection conn= new DatabaseConnection();
         conn.löschePersonalFromDB(id);
     }
@@ -276,13 +306,62 @@ public class personalController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    public void search_user(){
+        DatabaseConnection connection=new DatabaseConnection();
+        pcol_idnum.setCellValueFactory(new PropertyValueFactory<>("idNummer"));
+        pcol_vorname.setCellValueFactory(new PropertyValueFactory<>("vorname"));
+        pcol_nachname.setCellValueFactory(new PropertyValueFactory<>("nachname"));
+        pcol_gbdat.setCellValueFactory(new PropertyValueFactory<>("geburtsdatum"));
+        pcol_geschlecht.setCellValueFactory(new PropertyValueFactory<>("geschlecht"));
+        pcol_adres.setCellValueFactory(new PropertyValueFactory<>("adress"));
+        pcol_tel.setCellValueFactory(new PropertyValueFactory<>("telefonnummer"));
+        col_pıd.setCellValueFactory(new PropertyValueFactory<>("idPersonal"));
+        col_benutzername.setCellValueFactory(new PropertyValueFactory<>("benutzername"));
+        col_pass.setCellValueFactory(new PropertyValueFactory<>("passwort"));
 
+        dataList=connection.getDatausers();
+        personallist.setItems(dataList);
+        FilteredList<Personal> filteredData=new FilteredList<>(dataList,b ->true);
+
+        filterfield.textProperty().addListener((observable,oldValue,newValue ) ->{
+            filteredData.setPredicate(personal -> {
+                if (newValue==null || newValue.isEmpty()){
+                    return true;
+                }
+                String lowerCaseFilter=newValue.toLowerCase();
+                if (personal.getBenutzername().toLowerCase().indexOf(lowerCaseFilter)!= -1){
+                    return true;
+                }else if (personal.getPasswort().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                    return true;
+                }
+                else if (personal.getName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            });
+        });
+        SortedList<Personal> sortedData=new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(personallist.comparatorProperty());
+        personallist.setItems(sortedData);
+
+
+
+
+    }
+
+    public TableView<Personal> getPersonallist() {
+
+        return personallist;
+    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        File file1=new File(("C:\\Users\\Eylül\\IdeaProjects\\demo\\src\\main\\java\\com\\example\\demo\\2022-05-13 (11).png"));
-        Image image1=new Image(file1.toURI().toString());
+        File file1 = new File(("C:\\Users\\Eylül\\IdeaProjects\\demo\\src\\main\\java\\com\\example\\demo\\2022-05-13 (11).png"));
+        Image image1 = new Image(file1.toURI().toString());
         imageView1.setImage(image1);
 
 
@@ -296,31 +375,14 @@ public class personalController implements Initializable {
         col_pıd.setCellValueFactory(new PropertyValueFactory<>("idPersonal"));
         col_benutzername.setCellValueFactory(new PropertyValueFactory<>("benutzername"));
         col_pass.setCellValueFactory(new PropertyValueFactory<>("passwort"));
-        DatabaseConnection connection=new DatabaseConnection();
+        DatabaseConnection connection = new DatabaseConnection();
         personallist.setItems(connection.getDatausers());
-/*
-        try {
-            Connection con=DatabaseConnection.getConnection();
-            ResultSet rs=con.createStatement().executeQuery("SELECT * FROM mydb.personal;");
-            while (rs.next()){
-                System.out.println("girdi");
-                observableList.addAll(new Personal(rs.getInt("Personal ID"),
-                        rs.getString("Vorname"),rs.getString("Nachname"),
-                        rs.getString("Benutzername"),rs.getString("Passwort")));
-            }
-            System.out.println(observableList);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        personallist.setItems(observableList);
- */
+
+        search_user();
 
 
     }
-
-    public TableView<Personal> getPersonallist() {
-
-        return personallist;
-    }
-
 }
+
+
+

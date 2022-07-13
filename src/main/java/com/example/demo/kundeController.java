@@ -209,16 +209,11 @@ public class kundeController implements Initializable {
             stage.show();
         }catch (Exception e) {
         }
-        selectedID=kundenlist.getSelectionModel().getSelectedItem().getKundenid();
-        DatabaseConnection connection=new DatabaseConnection();
-        connection.getSelectedID(selectedID);
+
 
 
     }
 
-    public int getSelectedID(){
-        return selectedID;
-    }
 /*
     public void anrufInfosInForm(){
         kundeAktualController k=new kundeAktualController();

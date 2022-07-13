@@ -198,10 +198,13 @@ public class DatabaseConnection {
 
     public void löschePersonalFromDB(String id){
         conn=DatabaseConnection.getConnection();
-        String sql="delete from personal where id_nummer=" +id;
+        String sql="delete from personal where id_nummer=" +"'"+id+"'";
+        System.out.println(sql);
         try {
             PreparedStatement ps=conn.prepareStatement(sql);
             ps.execute();
+            personalController p=new personalController();
+            p.search_user();
         }catch (Exception e){
         }
     }
@@ -261,6 +264,8 @@ public class DatabaseConnection {
         try {
             PreparedStatement ps=conn.prepareStatement(sql);
             ps.execute();
+            personalController p=new personalController();
+            p.search_user();
         }catch (Exception e){
         }
     }
@@ -278,9 +283,12 @@ public class DatabaseConnection {
     }
 
     private int id;
-    public void getSelectedID(int id){
-        this.id=id;
+    public void getID(){
+        kundeAktualController k=new kundeAktualController();
+        id=k.eingebenKundenID();
+        System.out.println(id);
     }
+
     public void aktualisiereAdresseDB(String text) {
         conn=DatabaseConnection.getConnection();
         System.out.println(id);

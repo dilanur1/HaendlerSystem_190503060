@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -29,7 +30,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="personal_aktual" layoutX="13.0" layoutY="319.0" mnemonicParsing="false" onAction="#personalUpdate" prefHeight="25.0" prefWidth="153.0" text="Aktualisiere">
+            <Button fx:id="personal_aktual" layoutX="13.0" layoutY="323.0" mnemonicParsing="false" onAction="#personalUpdate" prefHeight="25.0" prefWidth="153.0" text="Aktualisiere">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -39,6 +40,11 @@
                   <Image url="@../../../../java/com/example/demo/2022-05-13%20(11).png" />
                </image>
             </ImageView>
+            <TextField fx:id="filterfield" layoutX="14.0" layoutY="375.0" prefHeight="25.0" prefWidth="153.0" promptText="Suche">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
          </children></Pane>
       <TableView fx:id="personallist" layoutX="188.0" layoutY="77.0" prefHeight="361.0" prefWidth="652.0">
          <columns>
@@ -59,7 +65,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="188.0" layoutY="450.0" mnemonicParsing="false" onAction="#refreshPersonalTable" prefHeight="24.0" prefWidth="153.0" text="Aktualisiere der List">
+      <Button layoutX="224.0" layoutY="450.0" mnemonicParsing="false" onAction="#refreshPersonalTable" prefHeight="30.0" prefWidth="153.0" text="Aktualisiere der List">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -69,7 +75,7 @@
             <Image url="@../../../../java/com/example/demo/user-personal-id-profile-icon-free-download-png-png-personal-profile-profile-11563125307lgli28skc2.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="348.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="188.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../java/com/example/demo/indir.png" />
          </image>

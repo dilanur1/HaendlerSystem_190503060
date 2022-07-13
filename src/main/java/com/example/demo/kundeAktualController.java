@@ -93,9 +93,14 @@ public class kundeAktualController implements Initializable {
     void aktualisiereIDNummer(ActionEvent event) {
 
     }
-
+    public int eingebenKundenID() {//id yi gir
+        int id = Integer.parseInt(aktual_kid.getText());
+        return id;
+    }
     @FXML
-    void aktualisiereKundenıd(ActionEvent event) {
+    public void eingebenKundenIDButton(ActionEvent event) {//id yi gir
+      DatabaseConnection connection=new DatabaseConnection();
+      connection.getID();
 
     }
 
