@@ -9,6 +9,15 @@ public class Person {
     private String  adress;
     private String telefonnummer;
 
+    public Person(String idnummer, String vorname, String nachname, String gbdatum, String adress, String telno) {
+        this.idNummer = idnummer;
+        this.vorname = vorname;
+        this.nachname = nachname;
+        this.geburtsdatum = gbdatum;
+        this.adress = adress;
+        this.telefonnummer = telno;
+    }
+
     public String getVorname() {
         return vorname;
     }

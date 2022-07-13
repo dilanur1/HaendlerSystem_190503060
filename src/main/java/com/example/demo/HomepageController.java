@@ -29,9 +29,29 @@ import javafx.stage.Stage;
 public class HomepageController implements Initializable {
     @FXML
     private Label anzahlvonprodukt;
+    @FXML
+    private Label anzahlvonpersonal;
+    @FXML
+    private Label anzahlvonkunde;
+
+    public void anzahlVonProdukt(ActionEvent event){
+        DatabaseConnection connection=new DatabaseConnection();
+        connection.sizeProduktDB();
+        anzahlvonprodukt.setText("3");
+    }
+
+    public void anzahlVonPersonal(ActionEvent event){
+        anzahlvonpersonal.setText("3");
+    }
+
+    public void anzahlVonKunde(ActionEvent event){
+        DatabaseConnection connection=new DatabaseConnection();
+
+        anzahlvonkunde.setText(String.valueOf(connection.returnCount()));
+    }
 
     private Stage stage;
-    private Scene scene;
+    Scene scene;
     private Parent root;
 
     public void switchToPersonal(ActionEvent event) throws IOException {

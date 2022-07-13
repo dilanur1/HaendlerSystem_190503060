@@ -92,6 +92,11 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
+            <Button layoutX="108.0" layoutY="642.0" mnemonicParsing="false" onAction="#infosInForm" prefHeight="30.0" prefWidth="181.0" text="Informationen erhalten">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

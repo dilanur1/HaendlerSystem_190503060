@@ -62,6 +62,14 @@ public class kundeController implements Initializable {
 
     }
 
+    public void refreshKundeTable(ActionEvent event) throws IOException {
+        root= FXMLLoader.load((getClass().getResource("kunde.fxml")));
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void kundeAdd(ActionEvent event){
         try{
             FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("kundeForm.fxml"));
@@ -74,18 +82,161 @@ public class kundeController implements Initializable {
         }
     }
 
-    public void kundeAktualisiereForm(ActionEvent event){
+    public void setCol_id(TableColumn<Kunde, String> col_id) {
+        this.col_id = col_id;
+    }
+
+    public void setCol_kvorname(TableColumn<Kunde, String> col_kvorname) {
+        this.col_kvorname = col_kvorname;
+    }
+
+    public void setCol_knachname(TableColumn<Kunde, String> col_knachname) {
+        this.col_knachname = col_knachname;
+    }
+
+    public void setCol_kgbdatum(TableColumn<Kunde, String> col_kgbdatum) {
+        this.col_kgbdatum = col_kgbdatum;
+    }
+
+    public void setCol_kgeschlecht(TableColumn<Kunde, String> col_kgeschlecht) {
+        this.col_kgeschlecht = col_kgeschlecht;
+    }
+
+    public void setCol_kadress(TableColumn<Kunde, String> col_kadress) {
+        this.col_kadress = col_kadress;
+    }
+
+    public void setCol_ktel(TableColumn<Kunde, String> col_ktel) {
+        this.col_ktel = col_ktel;
+    }
+
+    public void setCol_kid(TableColumn<Kunde, Integer> col_kid) {
+        this.col_kid = col_kid;
+    }
+
+    public void setCol_zahlinfo(TableColumn<Kunde, String> col_zahlinfo) {
+        this.col_zahlinfo = col_zahlinfo;
+    }
+
+    public void setKundenlist(TableView<Kunde> kundenlist) {
+        this.kundenlist = kundenlist;
+    }
+
+    public void setImageView1(ImageView imageView1) {
+        this.imageView1 = imageView1;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public void setRoot(Parent root) {
+        this.root = root;
+    }
+
+    public TableColumn<Kunde, String> getCol_id() {
+        return col_id;
+    }
+
+    public TableColumn<Kunde, String> getCol_kvorname() {
+        return col_kvorname;
+    }
+
+    public TableColumn<Kunde, String> getCol_knachname() {
+        return col_knachname;
+    }
+
+    public TableColumn<Kunde, String> getCol_kgbdatum() {
+        return col_kgbdatum;
+    }
+
+    public TableColumn<Kunde, String> getCol_kgeschlecht() {
+        return col_kgeschlecht;
+    }
+
+    public TableColumn<Kunde, String> getCol_kadress() {
+        return col_kadress;
+    }
+
+    public TableColumn<Kunde, String> getCol_ktel() {
+        return col_ktel;
+    }
+
+    public TableColumn<Kunde, Integer> getCol_kid() {
+        return col_kid;
+    }
+
+    public TableColumn<Kunde, String> getCol_zahlinfo() {
+        return col_zahlinfo;
+    }
+
+    public TableView<Kunde> getKundenlist() {
+        return kundenlist;
+    }
+
+    public ImageView getImageView1() {
+        return imageView1;
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public Parent getRoot() {
+        return root;
+    }
+
+    private int selectedID;
+
+    //formu açıyor
+    public void kundeAktualisiereForm(ActionEvent event) throws IOException{
+
         try{
+            System.out.println("ok");
             FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("kundeAktual.fxml"));
             Parent root=(Parent) fxmlLoader.load();
             Stage stage=new Stage();
             stage.setTitle("Kundeformular");
             stage.setScene(new Scene(root));
             stage.show();
-        }catch (Exception e){
+        }catch (Exception e) {
         }
+        selectedID=kundenlist.getSelectionModel().getSelectedItem().getKundenid();
+        DatabaseConnection connection=new DatabaseConnection();
+        connection.getSelectedID(selectedID);
+
+
     }
 
+    public int getSelectedID(){
+        return selectedID;
+    }
+/*
+    public void anrufInfosInForm(){
+        kundeAktualController k=new kundeAktualController();
+        String idnummer=kundenlist.getSelectionModel().getSelectedItem().getIdNummer();
+        int kid=kundenlist.getSelectionModel().getSelectedItem().getKundenid();
+        String vorname=kundenlist.getSelectionModel().getSelectedItem().getVorname();
+        String nachname=kundenlist.getSelectionModel().getSelectedItem().getNachname();
+        String gbdatum=kundenlist.getSelectionModel().getSelectedItem().getGeburtsdatum();
+        // String geschlecht=if(kundenlist.getSelectionModel().getSelectedItem().getGeschlecht().equals())
+        String adress=kundenlist.getSelectionModel().getSelectedItem().getAdress();
+        String telno=kundenlist.getSelectionModel().getSelectedItem().getTelefonnummer();
+
+
+        k.infosInForm(idnummer,kid,vorname,nachname,gbdatum,adress,telno);
+    }
+
+
+ */
     public void löscheVonKundeList(ActionEvent event){
         kundenlist.getItems().removeAll(kundenlist.getSelectionModel().getSelectedItem());
         //System.out.println(produktlist.getSelectionModel().getSelectedItem().getPid());
@@ -95,7 +246,13 @@ public class kundeController implements Initializable {
         DatabaseConnection conn= new DatabaseConnection();
         conn.löscheKundeFromDB(id);
     }
+    //seçilen satırın verilerini aktual controller a gönder controller da set textin içine yaz
+    /*
+    public void aktualisiereKundeList(ActionEvent event){
 
+    }
+
+     */
 
 
 
@@ -110,7 +267,7 @@ public class kundeController implements Initializable {
         col_knachname.setCellValueFactory(new PropertyValueFactory<>("nachname"));
         col_kgbdatum.setCellValueFactory(new PropertyValueFactory<>("geburtsdatum"));
         col_kgeschlecht.setCellValueFactory(new PropertyValueFactory<>("geschlecht"));
-        col_kadress.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        col_kadress.setCellValueFactory(new PropertyValueFactory<>("adress"));
         col_ktel.setCellValueFactory(new PropertyValueFactory<>("telefonnummer"));
         col_kid.setCellValueFactory(new PropertyValueFactory<>("kundenid"));
         col_zahlinfo.setCellValueFactory(new PropertyValueFactory<>("z"));

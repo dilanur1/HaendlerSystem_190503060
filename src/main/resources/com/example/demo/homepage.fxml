@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="490.0" prefWidth="844.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HomepageController">
+<AnchorPane prefHeight="490.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HomepageController">
    <children>
       <Pane prefHeight="490.0" prefWidth="181.0" style="-fx-background-color: #4a84c2;">
          <children>
@@ -51,14 +51,34 @@
             <Image url="@../../../../java/com/example/demo/homepage-icon-8.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="215.0" layoutY="131.0" prefHeight="21.0" prefWidth="165.0" text="Anzahl von Produkten:">
+      <Button layoutX="212.0" layoutY="152.0" mnemonicParsing="false" onAction="#anzahlVonProdukt" prefHeight="25.0" prefWidth="173.0" text="Aktuelle Produktanzahl">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="458.0" layoutY="152.0" mnemonicParsing="false" onAction="#anzahlVonPersonal" prefHeight="25.0" prefWidth="173.0" text="Aktuelle Personalanzahl">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="212.0" layoutY="245.0" mnemonicParsing="false" onAction="#anzahlVonKunde" prefHeight="25.0" prefWidth="173.0" text="Aktuelle Kundezahl">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Label fx:id="anzahlvonpersonal" layoutX="544.0" layoutY="196.0">
+         <font>
+            <Font size="13.0" />
          </font>
       </Label>
-      <Label fx:id="anzahlvonprodukt" layoutX="387.0" layoutY="131.0">
+      <Label fx:id="anzahlvonprodukt" layoutX="285.0" layoutY="197.0">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="anzahlvonkunde" layoutX="285.0" layoutY="297.0">
+         <font>
+            <Font size="13.0" />
          </font>
       </Label>
    </children>

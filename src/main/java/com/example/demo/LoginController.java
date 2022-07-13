@@ -78,6 +78,7 @@ public class LoginController implements Initializable {
         if(result == true) {
             HelloApplication m = new HelloApplication();
             m.changeScene("homepage.fxml");
+
         }else {
             falschPass.setText("Falsch Passwort oder Benutzername. Versuchen Sie\nwieder!");
         }

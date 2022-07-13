@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="596.0" prefWidth="443.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.produktFormController">
    <children>
       <Label layoutX="25.0" layoutY="28.0" text="PROUDUKTFORMULAR">
@@ -51,28 +50,28 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="151.0" layoutY="97.0" prefHeight="25.0" prefWidth="264.0" />
-      <TextField layoutX="150.0" layoutY="474.0" prefHeight="25.0" prefWidth="55.0" promptText="Länge" />
-      <TextField layoutX="149.0" layoutY="348.0" prefHeight="25.0" prefWidth="264.0" />
-      <TextField layoutX="151.0" layoutY="285.0" prefHeight="25.0" prefWidth="264.0" />
-      <TextField layoutX="151.0" layoutY="159.0" prefHeight="25.0" prefWidth="264.0" />
-      <Button layoutX="278.0" layoutY="530.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Speichern">
+      <TextField fx:id="proıdtxt" layoutX="151.0" layoutY="97.0" prefHeight="25.0" prefWidth="264.0" />
+      <TextField fx:id="lange_txt" layoutX="150.0" layoutY="474.0" prefHeight="25.0" prefWidth="55.0" promptText="Länge" />
+      <TextField fx:id="modell_txt" layoutX="149.0" layoutY="348.0" prefHeight="25.0" prefWidth="264.0" />
+      <TextField fx:id="garantiezeit_txt" layoutX="151.0" layoutY="285.0" prefHeight="25.0" prefWidth="264.0" />
+      <TextField fx:id="preis_txt" layoutX="151.0" layoutY="159.0" prefHeight="25.0" prefWidth="264.0" />
+      <Button layoutX="278.0" layoutY="530.0" mnemonicParsing="false" onAction="#speichern" prefHeight="25.0" prefWidth="135.0" text="Speichern">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <CheckBox layoutX="150.0" layoutY="415.0" mnemonicParsing="false" text="Ja">
+      <CheckBox fx:id="cb_ja" layoutX="150.0" layoutY="415.0" mnemonicParsing="false" text="Ja">
          <font>
             <Font size="14.0" />
          </font>
       </CheckBox>
-      <CheckBox layoutX="260.0" layoutY="415.0" mnemonicParsing="false" text="Nein">
+      <CheckBox fx:id="cb_nein" layoutX="260.0" layoutY="415.0" mnemonicParsing="false" text="Nein">
          <font>
             <Font size="14.0" />
          </font>
       </CheckBox>
-      <TextField layoutX="358.0" layoutY="474.0" prefHeight="25.0" prefWidth="55.0" promptText="Höhe" />
-      <TextField layoutX="250.0" layoutY="474.0" prefHeight="25.0" prefWidth="55.0" promptText="Breite" />
+      <TextField fx:id="höhe_txt" layoutX="358.0" layoutY="474.0" prefHeight="25.0" prefWidth="55.0" promptText="Höhe" />
+      <TextField fx:id="breite_txt" layoutX="250.0" layoutY="474.0" prefHeight="25.0" prefWidth="55.0" promptText="Breite" />
       <ComboBox fx:id="cbox_kategorie" layoutX="151.0" layoutY="219.0" prefHeight="25.0" prefWidth="264.0" />
    </children>
 </AnchorPane>

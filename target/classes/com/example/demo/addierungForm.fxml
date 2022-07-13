@@ -85,7 +85,7 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <Button layoutX="294.0" layoutY="642.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Speichern">
+        <Button layoutX="294.0" layoutY="642.0" mnemonicParsing="false" onAction="#speichern" prefHeight="25.0" prefWidth="135.0" text="Speichern">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>

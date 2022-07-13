@@ -9,13 +9,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
@@ -27,48 +25,175 @@ import javafx.stage.Stage;
 public class personalController implements Initializable {
     @FXML
     private TableColumn<Personal,String> col_benutzername;
-
     @FXML
     private TableColumn<Personal,String> col_pass;
-
     @FXML
     private TableColumn<Personal,Integer> col_pıd;
-
     @FXML
     private ImageView imageView1;
-
     @FXML
     private TableColumn<Personal,String> pcol_adres;
-
     @FXML
     private TableColumn<Personal,String> pcol_gbdat;
-
     @FXML
     private TableColumn<Personal,String> pcol_geschlecht;
-
     @FXML
     private TableColumn<Personal,String> pcol_idnum;
-
     @FXML
     private TableColumn<Personal,String> pcol_nachname;
-
     @FXML
     private TableColumn<Personal,String> pcol_tel;
-
     @FXML
     private TableColumn<Personal,String> pcol_vorname;
-
     @FXML
     private Button personal_add;
-
     @FXML
     private Button personal_aktual;
-
     @FXML
     private Button personal_lösche;
-
     @FXML
     private TableView<Personal> personallist;
+
+    public TableColumn<Personal, String> getCol_benutzername() {
+        return col_benutzername;
+    }
+
+    public TableColumn<Personal, String> getCol_pass() {
+        return col_pass;
+    }
+
+    public TableColumn<Personal, Integer> getCol_pıd() {
+        return col_pıd;
+    }
+
+    public ImageView getImageView1() {
+        return imageView1;
+    }
+
+    public TableColumn<Personal, String> getPcol_adres() {
+        return pcol_adres;
+    }
+
+    public TableColumn<Personal, String> getPcol_gbdat() {
+        return pcol_gbdat;
+    }
+
+    public TableColumn<Personal, String> getPcol_geschlecht() {
+        return pcol_geschlecht;
+    }
+
+    public TableColumn<Personal, String> getPcol_idnum() {
+        return pcol_idnum;
+    }
+
+    public TableColumn<Personal, String> getPcol_nachname() {
+        return pcol_nachname;
+    }
+
+    public TableColumn<Personal, String> getPcol_tel() {
+        return pcol_tel;
+    }
+
+    public TableColumn<Personal, String> getPcol_vorname() {
+        return pcol_vorname;
+    }
+
+    public Button getPersonal_add() {
+        return personal_add;
+    }
+
+    public Button getPersonal_aktual() {
+        return personal_aktual;
+    }
+
+    public Button getPersonal_lösche() {
+        return personal_lösche;
+    }
+
+
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public Parent getRoot() {
+        return root;
+    }
+
+    public void setCol_benutzername(TableColumn<Personal, String> col_benutzername) {
+        this.col_benutzername = col_benutzername;
+    }
+
+    public void setCol_pass(TableColumn<Personal, String> col_pass) {
+        this.col_pass = col_pass;
+    }
+
+    public void setCol_pıd(TableColumn<Personal, Integer> col_pıd) {
+        this.col_pıd = col_pıd;
+    }
+
+    public void setImageView1(ImageView imageView1) {
+        this.imageView1 = imageView1;
+    }
+
+    public void setPcol_adres(TableColumn<Personal, String> pcol_adres) {
+        this.pcol_adres = pcol_adres;
+    }
+
+    public void setPcol_gbdat(TableColumn<Personal, String> pcol_gbdat) {
+        this.pcol_gbdat = pcol_gbdat;
+    }
+
+    public void setPcol_geschlecht(TableColumn<Personal, String> pcol_geschlecht) {
+        this.pcol_geschlecht = pcol_geschlecht;
+    }
+
+    public void setPcol_idnum(TableColumn<Personal, String> pcol_idnum) {
+        this.pcol_idnum = pcol_idnum;
+    }
+
+    public void setPcol_nachname(TableColumn<Personal, String> pcol_nachname) {
+        this.pcol_nachname = pcol_nachname;
+    }
+
+    public void setPcol_tel(TableColumn<Personal, String> pcol_tel) {
+        this.pcol_tel = pcol_tel;
+    }
+
+    public void setPcol_vorname(TableColumn<Personal, String> pcol_vorname) {
+        this.pcol_vorname = pcol_vorname;
+    }
+
+    public void setPersonal_add(Button personal_add) {
+        this.personal_add = personal_add;
+    }
+
+    public void setPersonal_aktual(Button personal_aktual) {
+        this.personal_aktual = personal_aktual;
+    }
+
+    public void setPersonal_lösche(Button personal_lösche) {
+        this.personal_lösche = personal_lösche;
+    }
+
+
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public void setRoot(Parent root) {
+        this.root = root;
+    }
+
     @FXML
     private Stage stage;
     private Scene scene;
@@ -131,11 +256,25 @@ public class personalController implements Initializable {
 
 
     public void löscheVonPersonalList(ActionEvent event){
+        /*
         personallist.getItems().removeAll(personallist.getSelectionModel().getSelectedItem());
         System.out.println(personallist.getSelectionModel().getSelectedItem().getIdNummer());
         String id=personallist.getSelectionModel().getSelectedItem().getIdNummer();
+
+         */
+        int selected_id=personallist.getSelectionModel().getSelectedIndex();
+        personallist.getItems().remove(selected_id);
+        String id=personallist.getSelectionModel().getSelectedItem().getIdNummer();
         DatabaseConnection conn= new DatabaseConnection();
         conn.löschePersonalFromDB(id);
+    }
+
+    public void refreshPersonalTable(ActionEvent event) throws IOException {
+        root= FXMLLoader.load((getClass().getResource("personal.fxml")));
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 
@@ -168,21 +307,20 @@ public class personalController implements Initializable {
                 observableList.addAll(new Personal(rs.getInt("Personal ID"),
                         rs.getString("Vorname"),rs.getString("Nachname"),
                         rs.getString("Benutzername"),rs.getString("Passwort")));
-
             }
             System.out.println(observableList);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
-
         personallist.setItems(observableList);
-
-
  */
 
+
+    }
+
+    public TableView<Personal> getPersonallist() {
+
+        return personallist;
     }
 
 }

@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -50,32 +51,38 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="29.0" layoutY="517.0" text="Telefonnummer:">
+      <Label layoutX="24.0" layoutY="518.0" text="Telefonnummer:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="153.0" layoutY="90.0" prefHeight="25.0" prefWidth="280.0" />
-      <TextField layoutX="153.0" layoutY="145.0" prefHeight="25.0" prefWidth="280.0" />
-      <TextField layoutX="153.0" layoutY="199.0" prefHeight="25.0" prefWidth="280.0" />
-      <TextField layoutX="153.0" layoutY="257.0" prefHeight="25.0" prefWidth="280.0" />
-      <TextField layoutX="153.0" layoutY="309.0" prefHeight="25.0" prefWidth="280.0" promptText="tt/mm/jjjj" />
-      <TextField layoutX="153.0" layoutY="515.0" prefHeight="25.0" prefWidth="280.0" />
-      <CheckBox layoutX="153.0" layoutY="363.0" mnemonicParsing="false" text="Frau">
+      <TextField fx:id="kundeıd_txt" layoutX="153.0" layoutY="90.0" prefHeight="25.0" prefWidth="280.0" />
+      <TextField fx:id="kidnum_txt" layoutX="153.0" layoutY="145.0" prefHeight="25.0" prefWidth="280.0" />
+      <TextField fx:id="kvorn_txt" layoutX="153.0" layoutY="199.0" prefHeight="25.0" prefWidth="280.0" />
+      <TextField fx:id="knachn_txt" layoutX="153.0" layoutY="257.0" prefHeight="25.0" prefWidth="280.0" />
+      <TextField fx:id="kgbdat_txt" layoutX="153.0" layoutY="309.0" prefHeight="25.0" prefWidth="280.0" promptText="tt/mm/jjjj" />
+      <TextField fx:id="ktelno_txt" layoutX="153.0" layoutY="515.0" prefHeight="25.0" prefWidth="280.0" />
+      <CheckBox fx:id="cb_frau" layoutX="153.0" layoutY="363.0" mnemonicParsing="false" text="Frau">
          <font>
             <Font size="14.0" />
          </font>
       </CheckBox>
-      <CheckBox layoutX="282.0" layoutY="363.0" mnemonicParsing="false" text="Mann">
+      <CheckBox fx:id="cb_mann" layoutX="282.0" layoutY="363.0" mnemonicParsing="false" text="Mann">
          <font>
             <Font size="14.0" />
          </font>
       </CheckBox>
-      <TextArea layoutX="153.0" layoutY="415.0" prefHeight="80.0" prefWidth="280.0" />
-      <Button layoutX="293.0" layoutY="573.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Speichern">
+      <TextArea fx:id="kadress_txt" layoutX="153.0" layoutY="415.0" prefHeight="80.0" prefWidth="280.0" />
+      <Button layoutX="293.0" layoutY="598.0" mnemonicParsing="false" onAction="#speichern" prefHeight="25.0" prefWidth="135.0" text="Speichern">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
+      <Label layoutX="24.0" layoutY="558.0" text="Zahlungsmethode:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="zahlmethod_txt" layoutX="153.0" layoutY="556.0" prefHeight="25.0" prefWidth="280.0" />
    </children>
 </AnchorPane>

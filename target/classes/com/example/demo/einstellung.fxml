@@ -27,16 +27,6 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="279.0" mnemonicParsing="false" onAction="#Ausloggen" prefHeight="24.0" prefWidth="153.0" text="Ändern das Passwort">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button layoutX="14.0" layoutY="325.0" mnemonicParsing="false" onAction="#Ausloggen" prefHeight="24.0" prefWidth="153.0" text="Ändern die Benutzername">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
          </children>
       </Pane>
       <Label layoutX="218.0" layoutY="37.0" text="Einstellungen">

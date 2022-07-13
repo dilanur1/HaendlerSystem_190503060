@@ -1,6 +1,7 @@
 package com.example.demo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.SingleSelectionModel;
 
 
 import java.io.IOException;
@@ -58,6 +59,54 @@ public class DatabaseConnection {
         return false;
     }
 
+    public static Connection getConn() {
+        return conn;
+    }
+
+    public static PreparedStatement getPs() {
+        return ps;
+    }
+
+    public static ObservableList<Personal> getPersonalList() {
+        return personalList;
+    }
+
+    public static ObservableList<Produkt> getProduktList() {
+        return produktList;
+    }
+
+    public static ObservableList<Kunde> getKundenList() {
+        return kundenList;
+    }
+
+    public static void setConn(Connection conn) {
+        DatabaseConnection.conn = conn;
+    }
+
+    public static void setPs(PreparedStatement ps) {
+        DatabaseConnection.ps = ps;
+    }
+
+    public static void setPersonalList(ObservableList<Personal> personalList) {
+        DatabaseConnection.personalList = personalList;
+    }
+
+    public static void setProduktList(ObservableList<Produkt> produktList) {
+        DatabaseConnection.produktList = produktList;
+    }
+
+    public static void setKundenList(ObservableList<Kunde> kundenList) {
+        DatabaseConnection.kundenList = kundenList;
+    }
+
+
+
+
+
+
+
+
+
 
     private static ObservableList<Personal> personalList=FXCollections.observableArrayList();
 
@@ -100,8 +149,8 @@ public class DatabaseConnection {
             while (rs.next()){
                 Produkt produkt=new Produkt(rs.getInt("produkt_id"),rs.getDouble("preis"),
                         rs.getString("kategorie"),rs.getInt("garantiezeit"),
-                        rs.getString("modell"),rs.getString("lagerbestand"),rs.getDouble("höhe"),
-                        rs.getDouble("breite"),rs.getDouble("länge"));
+                        rs.getString("modell"),rs.getString("lagerbestand"),rs.getDouble("hohe"),
+                        rs.getDouble("breite"),rs.getDouble("lange"));
                 produktList.add(produkt);
             }
         }catch (Exception e){
@@ -111,11 +160,12 @@ public class DatabaseConnection {
         return produktList;
     }
 
-
+//seçilenin id sine göre select where komutu yaz
 
     private static ObservableList<Kunde> kundenList=FXCollections.observableArrayList();
-
+    private int count=0;
     public ObservableList getDatakunden(){
+
         kundenList = FXCollections.observableArrayList();
         kundenList.clear();
         Connection connection=this.getConnection();
@@ -132,12 +182,16 @@ public class DatabaseConnection {
                         rs.getString("kunde_adress"),rs.getString("kunde_telnummer"),
                         rs.getInt("kundenid"), rs.getString("zahlungsinfo"));
                 kundenList.add(kunde);
+                count++;
             }
         }catch (Exception e){
             e.printStackTrace();
             e.getCause();
         }
         return kundenList;
+    }
+    public int returnCount(){
+        return count;
     }
 
 
@@ -173,5 +227,70 @@ public class DatabaseConnection {
     }
 
 
+    public void sizeProduktDB() {
+        conn=DatabaseConnection.getConnection();
+        String sql="select COUNT(*) from produkt ";
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
 
+    }
+
+    public void addKundenToDB(String idnummer,String vorname,String nachname,
+                              String gbdatum,String geschlecht,String adresse,
+                              String telno,int kid,String zahlmethod){
+
+        conn=DatabaseConnection.getConnection();
+        String sql="INSERT into kunden(id_nummer,kunde_vorname,kunde_nachname,kunde_gbdatum,kunde_geschlecht,kunde_adress,kunde_telnummer,kundenid,zahlungsinfo) values(" + "'"+ idnummer+ "'"+ ","+ "'"+ vorname + "'" + ","+ "'" + nachname + "'" + ", " + "'"+ gbdatum+ "'" + ", " + "'"+ geschlecht+ "'" + ", "+"'"+adresse+"'"+", "+"'" +telno+"'"+", " + kid+", " +"'"+zahlmethod+"'"+")";
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+
+
+    }
+
+    public void addPersonalsToDB(String idnummer,String vorname,String nachname,String gbdatum,String geschlecht,String adresse,String telno,int pid,String benutzername,String pass){
+        conn=DatabaseConnection.getConnection();
+        String sql="INSERT into personal(id_nummer,vorname,nachname,geburtsdatum,geschlecht,adresse,telefonnummer,personal_id,benutzername,passwort) values(" + "'"+ idnummer+ "'"+ ","+ "'"+ vorname + "'" + ","+ "'" + nachname + "'" + ", " + "'"+ gbdatum+ "'" + ", " + "'"+ geschlecht+ "'" + ", "+"'"+adresse+"'"+", "+"'" +telno+"'"+", " + pid+", " +"'"+benutzername+"'"+","+"'"+pass+"'"+")";
+        //System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void addProduktsToDB(int proid, double preis, String kategorie, int garantizeit, String modell
+            , String lagerbestand, double lange, double breite, double höhe) {
+        conn=DatabaseConnection.getConnection();
+        String sql="INSERT into produkt(produkt_id,preis,kategorie,garantiezeit,modell,lagerbestand,hohe,breite,lange) values(" + proid+  ","+ preis + ","+ "'" + kategorie + "'" + ", " + garantizeit+  ", " + "'"+ modell+ "'" + ", "+"'"+lagerbestand+"'"+","  +höhe+ ", " + breite+", " + lange+ ")";
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    private int id;
+    public void getSelectedID(int id){
+        this.id=id;
+    }
+    public void aktualisiereAdresseDB(String text) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update kunden set kunde_adress=" + "'"+text+ "'" + "where kundenid=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+
+    }
 }

@@ -13,6 +13,12 @@ public class Kunde extends Person {
         this.kundenid = kundenid;
         this.z=z;
     }
+/*
+    public Kunde(String idnummer, String vorname, String nachname, String gbdatum, String adress, String telno) {
+        super(idnummer, vorname, nachname,gbdatum,adress,telno);
+    }
+
+ */
 
 
     public void setBetreuendePersonal(ArrayList<Personal> betreuendePersonal) {
@@ -48,13 +54,6 @@ public class Kunde extends Person {
         return z;
     }
 
-    public void einkaufen(int personalnummer, int pid, int kundenid) {
-    }
 
-    public void zurueckgeben(int personalnummer, int pid, int kundenid) {
-    }
-
-    public void bezahlen(int pid, int kundenid) {
-    }
 }
 
