@@ -45,10 +45,10 @@ public class HomepageController implements Initializable {
     }
 
     public void anzahlVonKunde(ActionEvent event){
-        DatabaseConnection connection=new DatabaseConnection();
 
-        anzahlvonkunde.setText(String.valueOf(connection.returnCount()));
     }
+
+
 
     private Stage stage;
     Scene scene;
@@ -63,7 +63,6 @@ public class HomepageController implements Initializable {
         stage.show();
 
     }
-
     public void switchToProdukt(ActionEvent event) throws IOException {
         root= FXMLLoader.load((getClass().getResource("produkt.fxml")));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -86,9 +85,15 @@ public class HomepageController implements Initializable {
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
+    public void switchToPV(ActionEvent event) throws IOException {
+        root= FXMLLoader.load((getClass().getResource("produktVerkaufen.fxml")));
 
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
 
 

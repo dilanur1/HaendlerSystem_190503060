@@ -24,7 +24,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="personal_lösche" layoutX="13.0" layoutY="271.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Löschen">
+            <Button fx:id="personal_lösche" layoutX="13.0" layoutY="271.0" mnemonicParsing="false" onAction="#löscheVonKundeList" prefHeight="25.0" prefWidth="153.0" text="Löschen">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -53,10 +53,10 @@
             <TableColumn fx:id="col_knachname" prefWidth="78.0" text="Nachname" />
             <TableColumn fx:id="col_kgbdatum" prefWidth="91.0" text="Geburtsdatum" />
             <TableColumn fx:id="col_kgeschlecht" prefWidth="65.0" text="Geschlecht" />
-            <TableColumn fx:id="col_kadress" prefWidth="53.0" text="Adress" />
-            <TableColumn fx:id="col_ktel" prefWidth="54.0" text="Telefon" />
-            <TableColumn fx:id="col_kid" prefWidth="70.0" text="Kundenid" />
-            <TableColumn fx:id="col_zahlinfo" prefWidth="82.0" text="Zahlungsinfo" />
+            <TableColumn fx:id="col_kadress" prefWidth="69.0" text="Adress" />
+            <TableColumn fx:id="col_ktel" prefWidth="68.0" text="Telefon" />
+            <TableColumn fx:id="col_kid" prefWidth="69.0" text="Kundenid" />
+            <TableColumn fx:id="col_pvid" prefWidth="53.0" text="PV-ID" />
         </columns>
       </TableView>
       <Button layoutX="194.0" layoutY="452.0" mnemonicParsing="false" onAction="#refreshKundeTable" prefHeight="24.0" prefWidth="153.0" text="Aktualisiere der List">

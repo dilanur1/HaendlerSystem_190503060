@@ -38,6 +38,11 @@
                   <Image url="@../../../../java/com/example/demo/2022-05-13%20(11).png" />
                </image>
             </ImageView>
+            <Button layoutX="12.0" layoutY="359.0" mnemonicParsing="false" onAction="#switchToPV" prefHeight="25.0" prefWidth="158.0" text="Produkt verkaufen">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
       <Accordion layoutX="24.0" layoutY="188.0" />

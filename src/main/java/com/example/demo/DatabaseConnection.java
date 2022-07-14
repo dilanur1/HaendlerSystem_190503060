@@ -163,7 +163,6 @@ public class DatabaseConnection {
 //seçilenin id sine göre select where komutu yaz
 
     private static ObservableList<Kunde> kundenList=FXCollections.observableArrayList();
-    private int count=0;
     public ObservableList getDatakunden(){
 
         kundenList = FXCollections.observableArrayList();
@@ -180,9 +179,8 @@ public class DatabaseConnection {
                         rs.getString("kunde_vorname"), rs.getString("kunde_nachname"),
                         rs.getString("kunde_gbdatum"), rs.getString("kunde_geschlecht"),
                         rs.getString("kunde_adress"),rs.getString("kunde_telnummer"),
-                        rs.getInt("kundenid"), rs.getString("zahlungsinfo"));
+                        rs.getInt("kundenid"), rs.getInt("pvid"));
                 kundenList.add(kunde);
-                count++;
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -190,9 +188,9 @@ public class DatabaseConnection {
         }
         return kundenList;
     }
-    public int returnCount(){
-        return count;
-    }
+
+
+
 
 
 
@@ -211,7 +209,7 @@ public class DatabaseConnection {
 
     public void löscheProduktFromDB(int id) {
         conn=DatabaseConnection.getConnection();
-        String sql="delete from produkt where produkt_id=" +id;
+        String sql="update produkt set lagerbestand='nein' where produkt_id=" +id ;
         try {
             PreparedStatement ps=conn.prepareStatement(sql);
             ps.execute();
@@ -243,10 +241,10 @@ public class DatabaseConnection {
 
     public void addKundenToDB(String idnummer,String vorname,String nachname,
                               String gbdatum,String geschlecht,String adresse,
-                              String telno,int kid,String zahlmethod){
+                              String telno,int kid,int pvid){
 
         conn=DatabaseConnection.getConnection();
-        String sql="INSERT into kunden(id_nummer,kunde_vorname,kunde_nachname,kunde_gbdatum,kunde_geschlecht,kunde_adress,kunde_telnummer,kundenid,zahlungsinfo) values(" + "'"+ idnummer+ "'"+ ","+ "'"+ vorname + "'" + ","+ "'" + nachname + "'" + ", " + "'"+ gbdatum+ "'" + ", " + "'"+ geschlecht+ "'" + ", "+"'"+adresse+"'"+", "+"'" +telno+"'"+", " + kid+", " +"'"+zahlmethod+"'"+")";
+        String sql="INSERT into kunden(id_nummer,kunde_vorname,kunde_nachname,kunde_gbdatum,kunde_geschlecht,kunde_adress,kunde_telnummer,kundenid,pvid) values(" + "'"+ idnummer+ "'"+ ","+ "'"+ vorname + "'" + ","+ "'" + nachname + "'" + ", " + "'"+ gbdatum+ "'" + ", " + "'"+ geschlecht+ "'" + ", "+"'"+adresse+"'"+", "+"'" +telno+"'"+", " + kid+", " +pvid+")";
         System.out.println(sql);
         try {
             PreparedStatement ps=conn.prepareStatement(sql);
@@ -282,14 +280,9 @@ public class DatabaseConnection {
         }
     }
 
-    private int id;
-    public void getID(){
-        kundeAktualController k=new kundeAktualController();
-        id=k.eingebenKundenID();
-        System.out.println(id);
-    }
 
-    public void aktualisiereAdresseDB(String text) {
+
+    public void aktualisiereAdresseDB(String text,int id) {
         conn=DatabaseConnection.getConnection();
         System.out.println(id);
         String sql="update kunden set kunde_adress=" + "'"+text+ "'" + "where kundenid=" +id;
@@ -300,5 +293,31 @@ public class DatabaseConnection {
         }catch (Exception e){
         }
 
+    }
+
+    private static ObservableList<Produkt_Verkaufen> PVList=FXCollections.observableArrayList();
+
+    public ObservableList<Produkt_Verkaufen> getDataPV() {
+        PVList = FXCollections.observableArrayList();
+        PVList.clear();
+        Connection connection=this.getConnection();
+        String sqlkod="SELECT * FROM produkt_verkaufen";
+
+        try{
+            Statement ps =connection.createStatement();
+            ResultSet rs = ps.executeQuery(sqlkod);
+
+            while (rs.next()) {
+                Produkt_Verkaufen pv=new Produkt_Verkaufen(rs.getInt("id"),
+                        rs.getInt("kunden_id"), rs.getInt("produkt_id"),
+                        rs.getString("zahlungsmethod"), rs.getString("datum"),
+                        rs.getString("service"));
+                PVList.add(pv);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+        return PVList;
     }
 }

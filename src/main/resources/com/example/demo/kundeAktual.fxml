@@ -15,20 +15,15 @@
             </font>
         </Label>
         <TextField fx:id="aktual_kid" layoutX="24.0" layoutY="77.0" prefHeight="25.0" prefWidth="271.0" promptText="Geben Sie Kunden ID ein." />
-        <TextField fx:id="aktual_idnum" layoutX="234.0" layoutY="145.0" prefHeight="25.0" prefWidth="271.0" visible="false" />
-        <TextField fx:id="aktual_vorname" layoutX="234.0" layoutY="199.0" prefHeight="25.0" prefWidth="271.0" visible="false" />
-        <TextField fx:id="aktual_nachname" layoutX="234.0" layoutY="257.0" prefHeight="25.0" prefWidth="271.0" visible="false" />
-        <TextField fx:id="aktual_gbdatum" layoutX="234.0" layoutY="309.0" prefHeight="25.0" prefWidth="271.0" promptText="tt/mm/jjjj" visible="false" />
-        <TextField fx:id="aktual_telno" layoutX="234.0" layoutY="516.0" prefHeight="25.0" prefWidth="271.0" visible="false" />
-        <TextArea fx:id="aktual_adresse" layoutX="234.0" layoutY="415.0" prefHeight="80.0" prefWidth="271.0" visible="false" />
+        <TextField fx:id="aktual_idnum" layoutX="234.0" layoutY="145.0" prefHeight="25.0" prefWidth="271.0" />
+        <TextField fx:id="aktual_vorname" layoutX="234.0" layoutY="199.0" prefHeight="25.0" prefWidth="271.0" />
+        <TextField fx:id="aktual_nachname" layoutX="234.0" layoutY="257.0" prefHeight="25.0" prefWidth="271.0" />
+        <TextField fx:id="aktual_gbdatum" layoutX="234.0" layoutY="309.0" prefHeight="25.0" prefWidth="271.0" promptText="tt/mm/jjjj" />
+        <TextField fx:id="aktual_telno" layoutX="234.0" layoutY="516.0" prefHeight="25.0" prefWidth="271.0" />
+        <TextArea fx:id="aktual_adresse" layoutX="234.0" layoutY="415.0" prefHeight="80.0" prefWidth="271.0" />
       <Button layoutX="370.0" layoutY="607.0" mnemonicParsing="false" onAction="#aktualisiereKundenlist" prefHeight="25.0" prefWidth="135.0" text="Aktualisieren">
          <font>
             <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="button_kid" layoutX="337.0" layoutY="78.0" mnemonicParsing="false" onAction="#eingebenKundenIDButton" prefHeight="25.0" prefWidth="135.0" text="Kunden ID eingeben">
-         <font>
-            <Font name="System Bold" size="12.0" />
          </font>
       </Button>
       <Button fx:id="button_idnummer" layoutX="24.0" layoutY="145.0" mnemonicParsing="false" onAction="#aktualisiereIDNummer" prefHeight="25.0" prefWidth="170.0" text="ID-Nummer aendern">
@@ -67,11 +62,11 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="button_zahlmethode" layoutX="24.0" layoutY="563.0" mnemonicParsing="false" onAction="#aktualisiereZahlmethode" prefHeight="25.0" prefWidth="170.0" text="Zahlungsmethode aendern">
+      <Button fx:id="button_pvid" layoutX="24.0" layoutY="563.0" mnemonicParsing="false" onAction="#aktualisierePVID" prefHeight="25.0" prefWidth="170.0" text="Produkt_Verkaufen ID aendern">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TextField fx:id="aktual_zahlmethod" layoutX="234.0" layoutY="563.0" prefHeight="25.0" prefWidth="271.0" visible="false" />
+      <TextField fx:id="aktual_pvid" layoutX="234.0" layoutY="563.0" prefHeight="25.0" prefWidth="271.0" />
     </children>
 </AnchorPane>

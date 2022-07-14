@@ -37,7 +37,7 @@ public class kundeAktualController implements Initializable {
     private TextField aktual_vorname;
 
     @FXML
-    private TextField aktual_zahlmethod;
+    private TextField aktual_pvid;
 
     @FXML
     private Button button_adresse;
@@ -64,7 +64,7 @@ public class kundeAktualController implements Initializable {
     private Button button_vorname;
 
     @FXML
-    private Button button_zahlmethode;
+    private Button button_pvid;
 
     @FXML
     void aktualisiereKundenlist(ActionEvent event) {
@@ -73,10 +73,9 @@ public class kundeAktualController implements Initializable {
 
     @FXML
     void aktualisiereAdresse(ActionEvent event) {
-        aktual_adresse.setVisible(true);
         System.out.println(aktual_adresse.getText());
         DatabaseConnection connection = new DatabaseConnection();
-        connection.aktualisiereAdresseDB(aktual_adresse.getText());
+        connection.aktualisiereAdresseDB(aktual_adresse.getText(),Integer.parseInt(aktual_kid.getText()));
     }
 
     @FXML
@@ -91,16 +90,6 @@ public class kundeAktualController implements Initializable {
 
     @FXML
     void aktualisiereIDNummer(ActionEvent event) {
-
-    }
-    public int eingebenKundenID() {//id yi gir
-        int id = Integer.parseInt(aktual_kid.getText());
-        return id;
-    }
-    @FXML
-    public void eingebenKundenIDButton(ActionEvent event) {//id yi gir
-      DatabaseConnection connection=new DatabaseConnection();
-      connection.getID();
 
     }
 
@@ -120,7 +109,7 @@ public class kundeAktualController implements Initializable {
     }
 
     @FXML
-    void aktualisiereZahlmethode(ActionEvent event) {
+    void aktualisierePVID(ActionEvent event) {
 
     }
 
@@ -156,8 +145,8 @@ public class kundeAktualController implements Initializable {
         return aktual_vorname;
     }
 
-    public TextField getAktual_zahlmethod() {
-        return aktual_zahlmethod;
+    public TextField getAktual_pvid() {
+        return aktual_pvid;
     }
 
     public Button getButton_adresse() {
@@ -192,8 +181,8 @@ public class kundeAktualController implements Initializable {
         return button_vorname;
     }
 
-    public Button getButton_zahlmethode() {
-        return button_zahlmethode;
+    public Button getButton_pvid() {
+        return button_pvid;
     }
 
     public void setAktual_adresse(TextArea aktual_adresse) {
@@ -228,8 +217,8 @@ public class kundeAktualController implements Initializable {
         this.aktual_vorname = aktual_vorname;
     }
 
-    public void setAktual_zahlmethod(TextField aktual_zahlmethod) {
-        this.aktual_zahlmethod = aktual_zahlmethod;
+    public void setAktual_pvid(TextField aktual_pvid) {
+        this.aktual_pvid = aktual_pvid;
     }
 
     public void setButton_adresse(Button button_adresse) {
@@ -264,8 +253,8 @@ public class kundeAktualController implements Initializable {
         this.button_vorname = button_vorname;
     }
 
-    public void setButton_zahlmethode(Button button_zahlmethode) {
-        this.button_zahlmethode = button_zahlmethode;
+    public void setButton_pvid(Button button_pvid) {
+        this.button_pvid = button_pvid;
     }
 
     @Override

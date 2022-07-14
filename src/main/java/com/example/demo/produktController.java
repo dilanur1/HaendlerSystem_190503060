@@ -221,7 +221,7 @@ public class produktController implements Initializable {
     }
 
     public void löscheVonProduktList(ActionEvent event){
-        produktlist.getItems().removeAll(produktlist.getSelectionModel().getSelectedItem());
+        //produktlist.getItems().removeAll(produktlist.getSelectionModel().getSelectedItem());
         //System.out.println(produktlist.getSelectionModel().getSelectedItem().getPid());
         //DatabaseConnection conn= (DatabaseConnection) DatabaseConnection.getConnection();
         int id=produktlist.getSelectionModel().getSelectedItem().getPid();

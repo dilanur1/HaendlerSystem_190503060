@@ -79,10 +79,6 @@ public class personalController implements Initializable {
         this.personallist = personallist;
     }
 
-
-
-
-
     public TableColumn<Personal, String> getCol_benutzername() {
         return col_benutzername;
     }
@@ -138,8 +134,6 @@ public class personalController implements Initializable {
     public Button getPersonal_lösche() {
         return personal_lösche;
     }
-
-
 
     public Stage getStage() {
         return stage;

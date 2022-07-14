@@ -43,7 +43,7 @@ public class kundeFormController implements Initializable {
     @FXML
     private TextField kvorn_txt;
     @FXML
-    private ComboBox zahlmethod_txt;
+    private TextField pvid_txt;
 
     @FXML
     void speichern(ActionEvent event) throws IOException {
@@ -51,7 +51,7 @@ public class kundeFormController implements Initializable {
         connection.addKundenToDB(kidnum_txt.getText(),kvorn_txt.getText(),
                 knachn_txt.getText(),kgbdat_txt.getText(),cb_frau.getText(),
                 kadress_txt.getText(),ktelno_txt.getText(),
-                Integer.parseInt(kundeıd_txt.getText()), (String) zahlmethod_txt.getSelectionModel().getSelectedItem());
+                Integer.parseInt(kundeıd_txt.getText()), Integer.parseInt(pvid_txt.getText()));
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         System.out.println("Sie sind erfolgreich speichern!");
@@ -64,6 +64,5 @@ public class kundeFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        zahlmethod_txt.getItems().addAll("Kreditkarte" , "Barzahlung");
     }
 }

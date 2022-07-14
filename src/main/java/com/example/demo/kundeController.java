@@ -41,7 +41,7 @@ public class kundeController implements Initializable {
     @FXML
     private TableColumn<Kunde, Integer> col_kid;
     @FXML
-    private TableColumn<Kunde, String> col_zahlinfo;
+    private TableColumn<Kunde, Integer> col_pvid;
 
     @FXML
     private TableView<Kunde> kundenlist;
@@ -114,8 +114,8 @@ public class kundeController implements Initializable {
         this.col_kid = col_kid;
     }
 
-    public void setCol_zahlinfo(TableColumn<Kunde, String> col_zahlinfo) {
-        this.col_zahlinfo = col_zahlinfo;
+    public void setCol_pvid(TableColumn<Kunde, Integer> col_pvid) {
+        this.col_pvid = col_pvid;
     }
 
     public void setKundenlist(TableView<Kunde> kundenlist) {
@@ -170,8 +170,8 @@ public class kundeController implements Initializable {
         return col_kid;
     }
 
-    public TableColumn<Kunde, String> getCol_zahlinfo() {
-        return col_zahlinfo;
+    public TableColumn<Kunde, Integer> getCol_pvid() {
+        return col_pvid;
     }
 
     public TableView<Kunde> getKundenlist() {
@@ -194,7 +194,6 @@ public class kundeController implements Initializable {
         return root;
     }
 
-    private int selectedID;
 
     //formu açıyor
     public void kundeAktualisiereForm(ActionEvent event) throws IOException{
@@ -214,24 +213,6 @@ public class kundeController implements Initializable {
 
     }
 
-/*
-    public void anrufInfosInForm(){
-        kundeAktualController k=new kundeAktualController();
-        String idnummer=kundenlist.getSelectionModel().getSelectedItem().getIdNummer();
-        int kid=kundenlist.getSelectionModel().getSelectedItem().getKundenid();
-        String vorname=kundenlist.getSelectionModel().getSelectedItem().getVorname();
-        String nachname=kundenlist.getSelectionModel().getSelectedItem().getNachname();
-        String gbdatum=kundenlist.getSelectionModel().getSelectedItem().getGeburtsdatum();
-        // String geschlecht=if(kundenlist.getSelectionModel().getSelectedItem().getGeschlecht().equals())
-        String adress=kundenlist.getSelectionModel().getSelectedItem().getAdress();
-        String telno=kundenlist.getSelectionModel().getSelectedItem().getTelefonnummer();
-
-
-        k.infosInForm(idnummer,kid,vorname,nachname,gbdatum,adress,telno);
-    }
-
-
- */
     public void löscheVonKundeList(ActionEvent event){
         kundenlist.getItems().removeAll(kundenlist.getSelectionModel().getSelectedItem());
         //System.out.println(produktlist.getSelectionModel().getSelectedItem().getPid());
@@ -241,13 +222,7 @@ public class kundeController implements Initializable {
         DatabaseConnection conn= new DatabaseConnection();
         conn.löscheKundeFromDB(id);
     }
-    //seçilen satırın verilerini aktual controller a gönder controller da set textin içine yaz
-    /*
-    public void aktualisiereKundeList(ActionEvent event){
 
-    }
-
-     */
 
 
 
@@ -265,7 +240,7 @@ public class kundeController implements Initializable {
         col_kadress.setCellValueFactory(new PropertyValueFactory<>("adress"));
         col_ktel.setCellValueFactory(new PropertyValueFactory<>("telefonnummer"));
         col_kid.setCellValueFactory(new PropertyValueFactory<>("kundenid"));
-        col_zahlinfo.setCellValueFactory(new PropertyValueFactory<>("z"));
+        col_pvid.setCellValueFactory(new PropertyValueFactory<>("pvid"));
 
         DatabaseConnection connection=new DatabaseConnection();
         kundenlist.setItems(connection.getDatakunden());
