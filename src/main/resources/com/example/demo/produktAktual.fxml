@@ -8,70 +8,76 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="596.0" prefWidth="443.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.prAktualController">
+<AnchorPane prefHeight="536.0" prefWidth="506.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.prAktualController">
     <children>
-        <Label layoutX="25.0" layoutY="28.0" text="PROUDUKTFORMULAR">
+        <Label layoutX="25.0" layoutY="28.0" text="Aenderung Produkt Informationen">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <Label layoutX="25.0" layoutY="99.0" text="Produkt ID:">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Label>
-        <Label layoutX="26.0" layoutY="162.0" text="Preis:">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Label>
-        <Label layoutX="27.0" layoutY="221.0" text="Kategorie:">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Label>
-        <Label layoutX="25.0" layoutY="288.0" text="Garantiezeit:">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Label>
-        <Label layoutX="26.0" layoutY="350.0" text="Modell:">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Label>
-        <Label layoutX="21.0" layoutY="415.0" text="Lagerbestand:">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Label>
-        <Label layoutX="24.0" layoutY="477.0" text="Abmessung(m):">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Label>
-        <TextField layoutX="151.0" layoutY="97.0" prefHeight="25.0" prefWidth="264.0" />
-        <TextField layoutX="150.0" layoutY="474.0" prefHeight="25.0" prefWidth="55.0" promptText="Länge" />
-        <TextField layoutX="149.0" layoutY="348.0" prefHeight="25.0" prefWidth="264.0" />
-        <TextField layoutX="151.0" layoutY="285.0" prefHeight="25.0" prefWidth="264.0" />
-        <TextField layoutX="151.0" layoutY="159.0" prefHeight="25.0" prefWidth="264.0" />
-        <Button layoutX="278.0" layoutY="530.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Aktualisieren">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Button>
-        <CheckBox layoutX="150.0" layoutY="415.0" mnemonicParsing="false" text="Ja">
+        <TextField fx:id="lange_eingeben" layoutX="106.0" layoutY="423.0" prefHeight="25.0" prefWidth="55.0" promptText="Länge" />
+        <TextField fx:id="modell_eingeben" layoutX="222.0" layoutY="311.0" prefHeight="25.0" prefWidth="264.0" />
+        <TextField fx:id="garantiezeit_eingeben" layoutX="222.0" layoutY="257.0" prefHeight="25.0" prefWidth="264.0" />
+        <CheckBox fx:id="ja_eingeben" layoutX="222.0" layoutY="368.0" mnemonicParsing="false" text="Ja">
             <font>
                 <Font size="14.0" />
             </font>
         </CheckBox>
-        <CheckBox layoutX="260.0" layoutY="415.0" mnemonicParsing="false" text="Nein">
+        <CheckBox fx:id="nein_eingeben" layoutX="346.0" layoutY="368.0" mnemonicParsing="false" text="Nein">
             <font>
                 <Font size="14.0" />
             </font>
         </CheckBox>
-        <TextField layoutX="358.0" layoutY="474.0" prefHeight="25.0" prefWidth="55.0" promptText="Höhe" />
-        <TextField layoutX="250.0" layoutY="474.0" prefHeight="25.0" prefWidth="55.0" promptText="Breite" />
-        <ComboBox fx:id="cbox_kategorie" layoutX="151.0" layoutY="219.0" prefHeight="25.0" prefWidth="264.0" />
+        <TextField fx:id="hohe_eingeben" layoutX="425.0" layoutY="423.0" prefHeight="25.0" prefWidth="55.0" promptText="Höhe" />
+        <TextField fx:id="breite_eingeben" layoutX="269.0" layoutY="423.0" prefHeight="25.0" prefWidth="55.0" promptText="Breite" />
+        <ComboBox fx:id="kategorie_eingeben" layoutX="222.0" layoutY="202.0" prefHeight="25.0" prefWidth="264.0" />
+      <TextField fx:id="kideingeben" layoutX="25.0" layoutY="85.0" prefHeight="25.0" prefWidth="271.0" promptText="Geben Sie Produkt ID ein." />
+      <Button fx:id="preis_aendern" layoutX="25.0" layoutY="147.0" mnemonicParsing="false" onAction="#aktualisierePreis" prefHeight="25.0" prefWidth="170.0" text="Preis aendern">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField fx:id="preis_eingeben" layoutX="219.0" layoutY="147.0" prefHeight="25.0" prefWidth="271.0" />
+      <Button fx:id="kategorie_aendern" layoutX="25.0" layoutY="202.0" mnemonicParsing="false" onAction="#aktualisiereKategorie" prefHeight="25.0" prefWidth="170.0" text="Kategorie aendern">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="garantiezeit_aendern" layoutX="25.0" layoutY="257.0" mnemonicParsing="false" onAction="#aktualisiereGarantiezeit" prefHeight="25.0" prefWidth="170.0" text="Garantiezeit aendern">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="modell_aendern" layoutX="25.0" layoutY="311.0" mnemonicParsing="false" onAction="#aktualisiereModell" prefHeight="25.0" prefWidth="170.0" text="Modell aendern">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="lagerbestand_aendern" layoutX="25.0" layoutY="368.0" mnemonicParsing="false" onAction="#aktualisiereLagerbestand" prefHeight="25.0" prefWidth="170.0" text="Lagerbestand aendern">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="lange_aendern" layoutX="25.0" layoutY="423.0" mnemonicParsing="false" onAction="#aktualisiereLange" prefHeight="25.0" prefWidth="62.0" text="Laenge aendern">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="pvid_aendern" layoutX="25.0" layoutY="476.0" mnemonicParsing="false" onAction="#aktualisierePVID" prefHeight="25.0" prefWidth="170.0" text="Verkauf ID aendern">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField fx:id="pvid_eingeben" layoutX="222.0" layoutY="476.0" prefHeight="25.0" prefWidth="264.0" />
+      <Button fx:id="breite_aendern" layoutX="198.0" layoutY="423.0" mnemonicParsing="false" onAction="#aktualisiereBreite" prefHeight="25.0" prefWidth="62.0" text="Breite aendern">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="hohe_aendern" layoutX="355.0" layoutY="423.0" mnemonicParsing="false" onAction="#aktualisiereHohe" prefHeight="25.0" prefWidth="62.0" text="Hoehe aendern">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

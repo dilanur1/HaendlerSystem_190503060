@@ -25,6 +25,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class personalController implements Initializable {
+
+
     @FXML
     private TableColumn<Personal,String> col_benutzername;
     @FXML

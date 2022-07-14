@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="596.0" prefWidth="443.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.produktFormController">
+<AnchorPane prefHeight="619.0" prefWidth="443.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.produktFormController">
    <children>
       <Label layoutX="25.0" layoutY="28.0" text="PROUDUKTFORMULAR">
          <font>
@@ -55,7 +55,7 @@
       <TextField fx:id="modell_txt" layoutX="149.0" layoutY="348.0" prefHeight="25.0" prefWidth="264.0" />
       <TextField fx:id="garantiezeit_txt" layoutX="151.0" layoutY="285.0" prefHeight="25.0" prefWidth="264.0" />
       <TextField fx:id="preis_txt" layoutX="151.0" layoutY="159.0" prefHeight="25.0" prefWidth="264.0" />
-      <Button layoutX="278.0" layoutY="530.0" mnemonicParsing="false" onAction="#speichern" prefHeight="25.0" prefWidth="135.0" text="Speichern">
+      <Button layoutX="281.0" layoutY="566.0" mnemonicParsing="false" onAction="#speichern" prefHeight="25.0" prefWidth="135.0" text="Speichern">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -73,5 +73,11 @@
       <TextField fx:id="höhe_txt" layoutX="358.0" layoutY="474.0" prefHeight="25.0" prefWidth="55.0" promptText="Höhe" />
       <TextField fx:id="breite_txt" layoutX="250.0" layoutY="474.0" prefHeight="25.0" prefWidth="55.0" promptText="Breite" />
       <ComboBox fx:id="cbox_kategorie" layoutX="151.0" layoutY="219.0" prefHeight="25.0" prefWidth="264.0" />
+      <Label layoutX="30.0" layoutY="520.0" text="Verkauf ID:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="verkaufid_txt" layoutX="149.0" layoutY="518.0" prefHeight="25.0" prefWidth="264.0" />
    </children>
 </AnchorPane>

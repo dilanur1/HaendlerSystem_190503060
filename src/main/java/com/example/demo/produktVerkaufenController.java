@@ -23,6 +23,17 @@ import java.util.ResourceBundle;
 public class produktVerkaufenController implements Initializable {
 
     @FXML
+    private TextField verkaufidfield;
+
+    public void setVerkaufidfield(TextField verkaufidfield) {
+        this.verkaufidfield = verkaufidfield;
+    }
+
+    public TextField getVerkaufidfield() {
+        return verkaufidfield;
+    }
+
+    @FXML
     private Button aktualisiereList;
 
     @FXML

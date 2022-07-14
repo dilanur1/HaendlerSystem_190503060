@@ -23,6 +23,18 @@ import javafx.scene.control.TableView;
 
 public class produktController implements Initializable {
     @FXML
+    private TableColumn<Produkt,Integer> colverkaufid;
+
+    public TableColumn<Produkt, Integer> getColverkaufid() {
+
+        return colverkaufid;
+    }
+
+    public void setColverkaufid(TableColumn<Produkt, Integer> colverkaufid) {
+        this.colverkaufid = colverkaufid;
+    }
+
+    @FXML
     private TableColumn<Produkt,String> kategorie;
 
     @FXML
@@ -221,11 +233,7 @@ public class produktController implements Initializable {
     }
 
     public void löscheVonProduktList(ActionEvent event){
-        //produktlist.getItems().removeAll(produktlist.getSelectionModel().getSelectedItem());
-        //System.out.println(produktlist.getSelectionModel().getSelectedItem().getPid());
-        //DatabaseConnection conn= (DatabaseConnection) DatabaseConnection.getConnection();
         int id=produktlist.getSelectionModel().getSelectedItem().getPid();
-        //String sql="delete from personal where id_nummer=" +id;
         DatabaseConnection conn= new DatabaseConnection();
         conn.löscheProduktFromDB(id);
     }
@@ -248,6 +256,7 @@ public class produktController implements Initializable {
         hohe.setCellValueFactory(new PropertyValueFactory<>("hohe"));
         breite.setCellValueFactory(new PropertyValueFactory<>("breite"));
         lange.setCellValueFactory(new PropertyValueFactory<>("lange"));
+        colverkaufid.setCellValueFactory(new PropertyValueFactory<>("pvid"));
 
 
         DatabaseConnection connection=new DatabaseConnection();

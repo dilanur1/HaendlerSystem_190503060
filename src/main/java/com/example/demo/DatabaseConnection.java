@@ -150,7 +150,7 @@ public class DatabaseConnection {
                 Produkt produkt=new Produkt(rs.getInt("produkt_id"),rs.getDouble("preis"),
                         rs.getString("kategorie"),rs.getInt("garantiezeit"),
                         rs.getString("modell"),rs.getString("lagerbestand"),rs.getDouble("hohe"),
-                        rs.getDouble("breite"),rs.getDouble("lange"));
+                        rs.getDouble("breite"),rs.getDouble("lange"),rs.getInt("pvid"));
                 produktList.add(produkt);
             }
         }catch (Exception e){
@@ -269,9 +269,9 @@ public class DatabaseConnection {
     }
 
     public void addProduktsToDB(int proid, double preis, String kategorie, int garantizeit, String modell
-            , String lagerbestand, double lange, double breite, double höhe) {
+            , String lagerbestand, double lange, double breite, double höhe,int pvid) {
         conn=DatabaseConnection.getConnection();
-        String sql="INSERT into produkt(produkt_id,preis,kategorie,garantiezeit,modell,lagerbestand,hohe,breite,lange) values(" + proid+  ","+ preis + ","+ "'" + kategorie + "'" + ", " + garantizeit+  ", " + "'"+ modell+ "'" + ", "+"'"+lagerbestand+"'"+","  +höhe+ ", " + breite+", " + lange+ ")";
+        String sql="INSERT into produkt(produkt_id,preis,kategorie,garantiezeit,modell,lagerbestand,hohe,breite,lange,pvid) values(" + proid+  ","+ preis + ","+ "'" + kategorie + "'" + ", " + garantizeit+  ", " + "'"+ modell+ "'" + ", "+"'"+lagerbestand+"'"+","  +höhe+ ", " + breite+", " + lange+","+ pvid+")";
         System.out.println(sql);
         try {
             PreparedStatement ps=conn.prepareStatement(sql);
@@ -282,18 +282,10 @@ public class DatabaseConnection {
 
 
 
-    public void aktualisiereAdresseDB(String text,int id) {
-        conn=DatabaseConnection.getConnection();
-        System.out.println(id);
-        String sql="update kunden set kunde_adress=" + "'"+text+ "'" + "where kundenid=" +id;
-        System.out.println(sql);
-        try {
-            PreparedStatement ps=conn.prepareStatement(sql);
-            ps.execute();
-        }catch (Exception e){
-        }
 
-    }
+
+
+
 
     private static ObservableList<Produkt_Verkaufen> PVList=FXCollections.observableArrayList();
 
@@ -320,4 +312,326 @@ public class DatabaseConnection {
         }
         return PVList;
     }
+
+    //KUNDE
+
+
+    public void aktualisiereAdresseDB(String text,int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update kunden set kunde_adress=" + "'"+text+ "'" + "where kundenid=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+
+    }
+    public void aktualisiereGbdatumDB(String text,int id){
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update kunden set kunde_gbdatum=" + "'"+text+ "'" + " where kundenid=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+
+    }
+    public void aktualisiereGeschlechtDB(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update kunden set kunde_geschlecht=" + "'"+text+ "'" + " where kundenid=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisiereIDNummer(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update kunden set id_nummer=" + "'"+text+ "'" + " where kundenid=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisiereNachname(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update kunden set kunde_nachname=" + "'"+text+ "'" + " where kundenid=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+
+    public void aktualisiereTelno(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update kunden set kunde_telnummer=" + "'"+text+ "'" + " where kundenid=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisiereVorname(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update kunden set kunde_vorname=" + "'"+text+ "'" + " where kundenid=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisierePVIDdb(int pvid, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update kunden set pvid=" +pvid+  " where kundenid=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    //PERSONAL
+
+    public void aktualisiereAdressePersonal(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update personal set adresse=" + "'"+text+ "'" + " where personal_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisiereBenutzername(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update personal set benutzername=" + "'"+text+ "'" + " where personal_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisiereGbdatumPersonal(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update personal set geburtsdatum=" + "'"+text+ "'" + " where personal_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisiereGeschlechtPersonal(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update personal set geschlecht=" + "'"+text+ "'" + "where personal_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisiereIDNummerPersonal(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update personal set id_nummer=" + "'"+text+ "'" + "where personal_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisiereNachnamePersonal(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update personal set nachname=" + "'"+text+ "'" + " where personal_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisierePasswort(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update personal set passwort=" + "'"+text+ "'" + " where personal_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisiereTelnoPersonal(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update personal set telefonnummer=" + "'"+text+ "'" + "where personal_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+    public void aktualisiereVornamePersonal(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update personal set vorname=" + "'"+text+ "'" + " where personal_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    //PRODUKT
+
+    public void aktualisiereLange(double text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update produkt set lange=" + text + " where produkt_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisiereBreite(double text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update produkt set breite=" + "'"+text+ "'" + " where produkt_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisiereHohe(double text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update produkt set hohe=" +text + " where produkt_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisiereGarantiezeit(int text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update produkt set garantiezeit=" +text + " where produkt_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisiereKategorie(String selectedItem, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update produkt set kategorie=" + "'"+ selectedItem+ "'" + " where produkt_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisiereLagerbestand(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update produkt set lagerbestand=" + "'"+text+ "'" + " where produkt_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisiereModell(String text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update produkt set modell=" + "'"+text+ "'" + " where produkt_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisierePVID(int pvid, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update produkt set pvid=" + pvid + " where produkt_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+    public void aktualisierePreis(double text, int id) {
+        conn=DatabaseConnection.getConnection();
+        System.out.println(id);
+        String sql="update produkt set preis=" + text+  " where produkt_id=" +id;
+        System.out.println(sql);
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.execute();
+        }catch (Exception e){
+        }
+    }
+
+
+
 }

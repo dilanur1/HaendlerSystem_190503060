@@ -12,8 +12,9 @@ public class Produkt {
     private double höhe;
     private double breite;
     private double länge;
+    private int pvid;
 
-    public Produkt(int produkt_id, double preis, String kategorie, int garantiezeit, String modell, String lagerbestand, double höhe, double breite, double länge) {
+    public Produkt(int produkt_id, double preis, String kategorie, int garantiezeit, String modell, String lagerbestand, double höhe, double breite, double länge,int pvid) {
         pid=produkt_id;
         this.preis=preis;
         this.kategorie=kategorie;
@@ -23,6 +24,7 @@ public class Produkt {
         this.höhe=höhe;
         this.breite=breite;
         this.länge=länge;
+        this.pvid=pvid;
     }
 
     public void setKategorie(String kategorie) {
@@ -92,5 +94,17 @@ public class Produkt {
 
     public double getLänge() {
         return länge;
+    }
+
+    public String getLagerbestand() {
+        return lagerbestand;
+    }
+
+    public int getPvid() {
+        return pvid;
+    }
+
+    public void setPvid(int pvid) {
+        this.pvid = pvid;
     }
 }

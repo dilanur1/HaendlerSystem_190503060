@@ -46,7 +46,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="produktlist" layoutX="217.0" layoutY="93.0" prefHeight="340.0" prefWidth="571.0">
+      <TableView fx:id="produktlist" layoutX="193.0" layoutY="93.0" prefHeight="340.0" prefWidth="643.0">
          <columns>
             <TableColumn fx:id="col_prıd" prefWidth="68.0" text="Produkt ID" />
             <TableColumn fx:id="preis" prefWidth="53.0" text="Preis" />
@@ -57,6 +57,7 @@
             <TableColumn fx:id="hohe" prefWidth="43.0" text="Höhe" />
             <TableColumn fx:id="breite" prefWidth="47.0" text="Breite" />
             <TableColumn fx:id="lange" minWidth="7.0" prefWidth="66.0" text="Länge" />
+            <TableColumn fx:id="colverkaufid" prefWidth="75.0" text="Verkauf ID" />
          </columns>
       </TableView>
       <Button layoutX="217.0" layoutY="448.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="24.0" prefWidth="153.0" text="Aktualisiere der List">

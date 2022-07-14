@@ -1,14 +1,11 @@
 package com.example.demo;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -19,6 +16,45 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class produktFormController implements Initializable {
+
+    @FXML
+    private TextField verkaufid_txt;
+
+    public TextField getVerkaufid_txt() {
+        return verkaufid_txt;
+    }
+
+    public void setVerkaufid_txt(TextField verkaufid_txt) {
+        this.verkaufid_txt = verkaufid_txt;
+    }
+
+    public void setCbox_kategorie(ComboBox<String> cbox_kategorie) {
+        this.cbox_kategorie = cbox_kategorie;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public void setRoot(Parent root) {
+        this.root = root;
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public Parent getRoot() {
+        return root;
+    }
 
     @FXML
     private TextField breite_txt;
@@ -98,10 +134,6 @@ public class produktFormController implements Initializable {
         this.cb_nein = cb_nein;
     }
 
-    public void setCbox_kategorie(ComboBox<?> cbox_kategorie) {
-        this.cbox_kategorie = (ComboBox<String>) cbox_kategorie;
-    }
-
     public void setGarantiezeit_txt(TextField garantiezeit_txt) {
         this.garantiezeit_txt = garantiezeit_txt;
     }
@@ -137,7 +169,7 @@ public class produktFormController implements Initializable {
 
     public void speichern(ActionEvent event) throws IOException {
         DatabaseConnection connection=new DatabaseConnection();
-        connection.addProduktsToDB(Integer.parseInt(proıdtxt.getText()),Double.parseDouble(preis_txt.getText()), cbox_kategorie.getSelectionModel().getSelectedItem(),Integer.parseInt(garantiezeit_txt.getText()),modell_txt.getText(),cb_ja.getText(), Double.parseDouble(lange_txt.getText()),Double.parseDouble(breite_txt.getText()),Double.parseDouble(höhe_txt.getText()));
+        connection.addProduktsToDB(Integer.parseInt(proıdtxt.getText()),Double.parseDouble(preis_txt.getText()), cbox_kategorie.getSelectionModel().getSelectedItem(),Integer.parseInt(garantiezeit_txt.getText()),modell_txt.getText(),cb_ja.getText(), Double.parseDouble(lange_txt.getText()),Double.parseDouble(breite_txt.getText()),Double.parseDouble(höhe_txt.getText()),Integer.parseInt(verkaufid_txt.getText()));
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         System.out.println("Sie sind erfolgreich speichern!");

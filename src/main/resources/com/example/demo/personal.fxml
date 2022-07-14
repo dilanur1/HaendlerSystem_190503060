@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="490.0" prefWidth="844.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.personalController">
+<AnchorPane prefHeight="490.0" prefWidth="857.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.personalController">
    <children>
       <Pane prefHeight="490.0" prefWidth="181.0" style="-fx-background-color: #4a84c2;">
          <children>
@@ -46,7 +46,7 @@
                </font>
             </TextField>
          </children></Pane>
-      <TableView fx:id="personallist" layoutX="188.0" layoutY="77.0" prefHeight="361.0" prefWidth="652.0">
+      <TableView fx:id="personallist" layoutX="188.0" layoutY="77.0" prefHeight="361.0" prefWidth="650.0">
          <columns>
             <TableColumn fx:id="pcol_idnum" prefWidth="88.0" text="ID-Nummer" />
             <TableColumn fx:id="pcol_vorname" minWidth="6.0" prefWidth="65.0" text="Vorname" />

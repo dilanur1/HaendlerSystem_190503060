@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.CheckBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -65,6 +66,11 @@ public class kundeAktualController implements Initializable {
 
     @FXML
     private Button button_pvid;
+    @FXML
+    private CheckBox fraucb;
+
+    @FXML
+    private CheckBox manncb;
 
     @FXML
     void aktualisiereKundenlist(ActionEvent event) {
@@ -73,7 +79,7 @@ public class kundeAktualController implements Initializable {
 
     @FXML
     void aktualisiereAdresse(ActionEvent event) {
-        System.out.println(aktual_adresse.getText());
+        //System.out.println(aktual_adresse.getText());
         DatabaseConnection connection = new DatabaseConnection();
         connection.aktualisiereAdresseDB(aktual_adresse.getText(),Integer.parseInt(aktual_kid.getText()));
     }
@@ -81,36 +87,49 @@ public class kundeAktualController implements Initializable {
     @FXML
     void aktualisiereGbdatum(ActionEvent event) {
 
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.aktualisiereGbdatumDB(aktual_gbdatum.getText(),Integer.parseInt(aktual_kid.getText()));
     }
 
     @FXML
     void aktualisiereGeschlecht(ActionEvent event) {
+        DatabaseConnection connection = new DatabaseConnection();
+        if(fraucb.isSelected()){
+            connection.aktualisiereGeschlechtDB(fraucb.getText(),Integer.parseInt(aktual_kid.getText()));
+        }else if (manncb.isSelected()){
+            connection.aktualisiereGeschlechtDB(manncb.getText(),Integer.parseInt(aktual_kid.getText()));
 
+        }
     }
 
     @FXML
     void aktualisiereIDNummer(ActionEvent event) {
-
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.aktualisiereIDNummer(aktual_idnum.getText(),Integer.parseInt(aktual_kid.getText()));
     }
 
     @FXML
     void aktualisiereNachname(ActionEvent event) {
-
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.aktualisiereNachname(aktual_nachname.getText(),Integer.parseInt(aktual_kid.getText()));
     }
 
     @FXML
     void aktualisiereTelno(ActionEvent event) {
-
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.aktualisiereTelno(aktual_telno.getText(),Integer.parseInt(aktual_kid.getText()));
     }
 
     @FXML
     void aktualisiereVorname(ActionEvent event) {
-
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.aktualisiereVorname(aktual_vorname.getText(),Integer.parseInt(aktual_kid.getText()));
     }
 
     @FXML
     void aktualisierePVID(ActionEvent event) {
-
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.aktualisierePVIDdb(Integer.parseInt(aktual_pvid.getText()),Integer.parseInt(aktual_kid.getText()));
     }
 
     public TextArea getAktual_adresse() {
