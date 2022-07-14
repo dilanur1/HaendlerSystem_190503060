@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,92 +10,78 @@
 
 <AnchorPane prefHeight="703.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.aktualPersonalFormController">
    <children>
-      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="693.0" prefWidth="443.0">
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="658.0" prefWidth="534.0">
          <children>
-            <TextField fx:id="pid_field" layoutX="149.0" layoutY="96.0" prefHeight="25.0" prefWidth="280.0" />
-            <Label layoutX="26.0" layoutY="99.0" text="Personal ID:">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="28.0" layoutY="204.0" text="Vorname:">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="23.0" layoutY="261.0" text="Nachname:">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="18.0" layoutY="320.0" text="Benutzername:">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="28.0" layoutY="377.0" text="Passwort:">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="26.0" layoutY="149.0" text="ID-Nummer:">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="18.0" layoutY="422.0" text="Geburtsdatum:">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="22.0" layoutY="463.0" text="Geschlecht:">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="21.0" layoutY="509.0" text="Adresse:">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="22.0" layoutY="601.0" text="Telefonnummer:">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <TextArea fx:id="padres_field" layoutX="151.0" layoutY="501.0" prefHeight="80.0" prefWidth="280.0" />
-            <TextField fx:id="ptelno_field" layoutX="151.0" layoutY="598.0" prefHeight="25.0" prefWidth="280.0" />
-            <CheckBox fx:id="checkbox_frau" layoutX="149.0" layoutY="463.0" mnemonicParsing="false" text="Frau">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </CheckBox>
-            <CheckBox fx:id="checkbox_mann" layoutX="275.0" layoutY="463.0" mnemonicParsing="false" text="Mann">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </CheckBox>
-            <TextField fx:id="pgbdatum_field" layoutX="149.0" layoutY="422.0" prefHeight="25.0" prefWidth="280.0" promptText="tt/mm/jjjj" />
-            <TextField fx:id="idnum_field" layoutX="149.0" layoutY="146.0" prefHeight="25.0" prefWidth="280.0" />
-            <TextField fx:id="pvornamefield" layoutX="149.0" layoutY="201.0" prefHeight="25.0" prefWidth="280.0" />
-            <TextField fx:id="benutzernamefield" layoutX="149.0" layoutY="317.0" prefHeight="25.0" prefWidth="280.0" />
-            <TextField fx:id="pnachnamefield" layoutX="149.0" layoutY="258.0" prefHeight="25.0" prefWidth="280.0" />
-            <PasswordField fx:id="passwortfield" layoutX="149.0" layoutY="374.0" prefHeight="25.0" prefWidth="280.0" />
-            <Label layoutX="25.0" layoutY="24.0" text="PERSONALFORMULAR">
+            <Label layoutX="24.0" layoutY="25.0" text="Aenderung Personal Informationen">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="294.0" layoutY="642.0" mnemonicParsing="false" onAction="#aktualiserePersonal" prefHeight="25.0" prefWidth="135.0" text="Aktualisieren">
+            <TextField fx:id="aktual_personalid" layoutX="24.0" layoutY="77.0" prefHeight="25.0" prefWidth="271.0" promptText="Geben Sie Personal ID ein." />
+            <TextField fx:id="aktual_idnum" layoutX="234.0" layoutY="145.0" prefHeight="25.0" prefWidth="271.0" />
+            <TextField fx:id="aktual_vorname" layoutX="234.0" layoutY="199.0" prefHeight="25.0" prefWidth="271.0" />
+            <TextField fx:id="aktual_nachname" layoutX="234.0" layoutY="257.0" prefHeight="25.0" prefWidth="271.0" />
+            <TextField fx:id="aktual_gbdatum" layoutX="234.0" layoutY="309.0" prefHeight="25.0" prefWidth="271.0" promptText="tt/mm/jjjj" />
+            <TextField fx:id="aktual_telno" layoutX="234.0" layoutY="516.0" prefHeight="25.0" prefWidth="271.0" />
+            <TextArea fx:id="aktual_adresse" layoutX="234.0" layoutY="415.0" prefHeight="80.0" prefWidth="271.0" />
+            <Button fx:id="button_idnummer" layoutX="24.0" layoutY="145.0" mnemonicParsing="false" onAction="#aktualisiereIDNummer" prefHeight="25.0" prefWidth="170.0" text="ID-Nummer aendern">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="108.0" layoutY="642.0" mnemonicParsing="false" onAction="#infosInForm" prefHeight="30.0" prefWidth="181.0" text="Informationen erhalten">
+            <Button fx:id="button_vorname" layoutX="24.0" layoutY="199.0" mnemonicParsing="false" onAction="#aktualisiereVorname" prefHeight="25.0" prefWidth="170.0" text="Vorname aendern">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <Button fx:id="button_nachname" layoutX="24.0" layoutY="257.0" mnemonicParsing="false" onAction="#aktualisiereNachname" prefHeight="25.0" prefWidth="170.0" text="Nachname aendern">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="button_gbdatum" layoutX="24.0" layoutY="309.0" mnemonicParsing="false" onAction="#aktualisiereGbdatum" prefHeight="25.0" prefWidth="170.0" text="Geburtsdatum aendern">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="button_geschlecht" layoutX="24.0" layoutY="361.0" mnemonicParsing="false" onAction="#aktualisiereGeschlecht" prefHeight="25.0" prefWidth="170.0" text="Geschlecht aendern">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <TextField fx:id="aktual_geschlecht" layoutX="234.0" layoutY="361.0" prefHeight="25.0" prefWidth="271.0" visible="false" />
+            <Button fx:id="button_adresse" layoutX="24.0" layoutY="415.0" mnemonicParsing="false" onAction="#aktualisiereAdresse" prefHeight="25.0" prefWidth="170.0" text="Adresse aendern">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="button_telno" layoutX="24.0" layoutY="516.0" mnemonicParsing="false" onAction="#aktualisiereTelno" prefHeight="25.0" prefWidth="170.0" text="Telefonnummer aendern">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <CheckBox fx:id="fraucb" layoutX="234.0" layoutY="365.0" mnemonicParsing="false" text="Frau">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="manncb" layoutX="388.0" layoutY="365.0" mnemonicParsing="false" text="Mann">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </CheckBox>
+            <Button fx:id="button_benutzername" layoutX="24.0" layoutY="563.0" mnemonicParsing="false" onAction="#aktualisiereBenutzername" prefHeight="25.0" prefWidth="170.0" text="Benutzername aendern">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="button_pass" layoutX="24.0" layoutY="613.0" mnemonicParsing="false" onAction="#aktualisierePasswort" prefHeight="25.0" prefWidth="170.0" text="Passwort aendern">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <TextField fx:id="aktual_benutzername" layoutX="234.0" layoutY="563.0" prefHeight="25.0" prefWidth="271.0" />
+            <TextField fx:id="aktual_pass" layoutX="234.0" layoutY="613.0" prefHeight="25.0" prefWidth="271.0" />
          </children>
       </AnchorPane>
    </children>
