@@ -27,6 +27,10 @@ public class Produkt {
         this.pvid=pvid;
     }
 
+    public Produkt(int pid) {
+        this.pid = pid;
+    }
+
     public void setKategorie(String kategorie) {
         this.kategorie = kategorie;
     }
@@ -84,7 +88,7 @@ public class Produkt {
     public void service(Date datum) {
     }
 
-    public double getHöhe() {
+    public double getHohe() {
         return höhe;
     }
 
@@ -92,7 +96,7 @@ public class Produkt {
         return breite;
     }
 
-    public double getLänge() {
+    public double getLange() {
         return länge;
     }
 

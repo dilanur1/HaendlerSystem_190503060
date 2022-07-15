@@ -48,10 +48,11 @@ public class kundeFormController implements Initializable {
     @FXML
     void speichern(ActionEvent event) throws IOException {
         DatabaseConnection connection=new DatabaseConnection();
-        connection.addKundenToDB(kidnum_txt.getText(),kvorn_txt.getText(),
+        Kunde kunde=new Kunde(kidnum_txt.getText(),kvorn_txt.getText(),
                 knachn_txt.getText(),kgbdat_txt.getText(),cb_frau.getText(),
                 kadress_txt.getText(),ktelno_txt.getText(),
                 Integer.parseInt(kundeıd_txt.getText()), Integer.parseInt(pvid_txt.getText()));
+        connection.addKundenToDB(kunde);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         System.out.println("Sie sind erfolgreich speichern!");

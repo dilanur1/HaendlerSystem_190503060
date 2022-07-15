@@ -4,13 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="490.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.produktController">
+<AnchorPane prefHeight="490.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.produktController">
    <children>
       <Pane prefHeight="490.0" prefWidth="181.0" style="-fx-background-color: #4a84c2;">
          <children>
@@ -39,6 +40,11 @@
                   <Image url="@../../../../java/com/example/demo/2022-05-13%20(11).png" />
                </image>
             </ImageView>
+            <TextField fx:id="filterfield" layoutX="13.0" layoutY="367.0" prefHeight="25.0" prefWidth="153.0" promptText="Suche">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
          </children>
       </Pane>
       <Label layoutX="217.0" layoutY="39.0" text="Produkt List">
@@ -46,7 +52,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="produktlist" layoutX="193.0" layoutY="93.0" prefHeight="340.0" prefWidth="643.0">
+      <TableView fx:id="produktlist" layoutX="193.0" layoutY="93.0" prefHeight="340.0" prefWidth="571.0">
          <columns>
             <TableColumn fx:id="col_prıd" prefWidth="68.0" text="Produkt ID" />
             <TableColumn fx:id="preis" prefWidth="53.0" text="Preis" />
@@ -57,7 +63,7 @@
             <TableColumn fx:id="hohe" prefWidth="43.0" text="Höhe" />
             <TableColumn fx:id="breite" prefWidth="47.0" text="Breite" />
             <TableColumn fx:id="lange" minWidth="7.0" prefWidth="66.0" text="Länge" />
-            <TableColumn fx:id="colverkaufid" prefWidth="75.0" text="Verkauf ID" />
+            <TableColumn fx:id="colverkaufid" minWidth="0.0" prefWidth="0.0" text="Verkauf ID" />
          </columns>
       </TableView>
       <Button layoutX="217.0" layoutY="448.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="24.0" prefWidth="153.0" text="Aktualisiere der List">

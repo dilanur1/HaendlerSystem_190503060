@@ -67,6 +67,7 @@ public class personalController implements Initializable {
     public void setFilterfield(TextField filterfield) {
         this.filterfield = filterfield;
     }
+
     ObservableList<Personal> dataList;
 
     public ObservableList<Personal> getDataList() {
@@ -218,6 +219,11 @@ public class personalController implements Initializable {
     public void setRoot(Parent root) {
         this.root = root;
     }
+    public TableView<Personal> getPersonallist() {
+
+        return personallist;
+    }
+
 
     @FXML
     private Stage stage;
@@ -247,25 +253,6 @@ public class personalController implements Initializable {
     }
 
     public void personalUpdate(ActionEvent event){
-        /*
-
-        int pid =personallist.getSelectionModel().getSelectedItem().getIdPersonal();
-        String idnummer=personallist.getSelectionModel().getSelectedItem().getIdNummer();
-        String vorname=personallist.getSelectionModel().getSelectedItem().getVorname();
-        String nachname=personallist.getSelectionModel().getSelectedItem().getNachname();
-        String benutzername=personallist.getSelectionModel().getSelectedItem().getBenutzername();
-        String pass=personallist.getSelectionModel().getSelectedItem().getPasswort();
-        String gbdatum=personallist.getSelectionModel().getSelectedItem().getGeburtsdatum();
-        String adresse=personallist.getSelectionModel().getSelectedItem().getAdress();
-        String telno=personallist.getSelectionModel().getSelectedItem().getTelefonnummer();
-
-        //System.out.println(pid+idnummer+vorname+nachname+benutzername+pass+gbdatum+adresse+telno);
-        personalFormController p=new personalFormController();
-        p.aktualiserePersonal(event,pid,idnummer,vorname,nachname,benutzername,pass,gbdatum,adresse,telno);
-        //System.out.println(personallist.getSelectionModel().getSelectedItem().getIdNummer());
-
-         */
-
         try{
             FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("aktualPersonalForm.fxml"));
             Parent root=(Parent) fxmlLoader.load();
@@ -276,23 +263,16 @@ public class personalController implements Initializable {
         }catch (Exception e){
             System.out.println("nicht");
         }
-        
+
     }
 
-
     public void löscheVonPersonalList(ActionEvent event){
-        /*
-        personallist.getItems().removeAll(personallist.getSelectionModel().getSelectedItem());
-        System.out.println(personallist.getSelectionModel().getSelectedItem().getIdNummer());
-        String id=personallist.getSelectionModel().getSelectedItem().getIdNummer();
 
-         */
-        int selected_id=personallist.getSelectionModel().getSelectedIndex();
-        personallist.getItems().remove(selected_id);
         String id=personallist.getSelectionModel().getSelectedItem().getIdNummer();
-        System.out.println(personallist.getSelectionModel().getSelectedItem().getName());
         DatabaseConnection conn= new DatabaseConnection();
         conn.löschePersonalFromDB(id);
+        personallist.getItems().removeAll(personallist.getSelectionModel().getSelectedItem());
+
     }
 
     public void refreshPersonalTable(ActionEvent event) throws IOException {
@@ -302,6 +282,9 @@ public class personalController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+
+
     @FXML
     public void search_user(){
         DatabaseConnection connection=new DatabaseConnection();
@@ -317,7 +300,7 @@ public class personalController implements Initializable {
         col_pass.setCellValueFactory(new PropertyValueFactory<>("passwort"));
 
         dataList=connection.getDatausers();
-        personallist.setItems(dataList);
+        //personallist.setItems(dataList);
         FilteredList<Personal> filteredData=new FilteredList<>(dataList,b ->true);
 
         filterfield.textProperty().addListener((observable,oldValue,newValue ) ->{
@@ -328,7 +311,7 @@ public class personalController implements Initializable {
                 String lowerCaseFilter=newValue.toLowerCase();
                 if (personal.getBenutzername().toLowerCase().indexOf(lowerCaseFilter)!= -1){
                     return true;
-                }else if (personal.getPasswort().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                }else if (personal.getIdNummer().toLowerCase().indexOf(lowerCaseFilter)!=-1){
                     return true;
                 }
                 else if (personal.getName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
@@ -341,6 +324,7 @@ public class personalController implements Initializable {
         });
         SortedList<Personal> sortedData=new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(personallist.comparatorProperty());
+
         personallist.setItems(sortedData);
 
 
@@ -348,10 +332,6 @@ public class personalController implements Initializable {
 
     }
 
-    public TableView<Personal> getPersonallist() {
-
-        return personallist;
-    }
 
 
     @Override
@@ -371,6 +351,7 @@ public class personalController implements Initializable {
         col_pıd.setCellValueFactory(new PropertyValueFactory<>("idPersonal"));
         col_benutzername.setCellValueFactory(new PropertyValueFactory<>("benutzername"));
         col_pass.setCellValueFactory(new PropertyValueFactory<>("passwort"));
+
         DatabaseConnection connection = new DatabaseConnection();
         personallist.setItems(connection.getDatausers());
 

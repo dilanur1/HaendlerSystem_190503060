@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,13 +17,124 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
 
 public class produktVerkaufenController implements Initializable {
+    @FXML
+    private Label keineprodukLabel;
+
+    public Label getKeineprodukLabel() {
+        return keineprodukLabel;
+    }
+
+    public void setKeineprodukLabel(Label keineprodukLabel) {
+        this.keineprodukLabel = keineprodukLabel;
+    }
+
+    public ObservableList<Produkt> getProdukts() {
+        return produkts;
+    }
+
+    public void setProdukts(ObservableList<Produkt> produkts) {
+        this.produkts = produkts;
+    }
+
+    @FXML
+    private TextField suche;
+
+    public TextField getSuche() {
+        return suche;
+    }
+
+    public void setSuche(TextField suche) {
+        this.suche = suche;
+    }
+
+    @FXML
+    private Button löschen;
+
+    public Button getDatum_aendern() {
+        return datum_aendern;
+    }
+
+    public void setDatum_aendern(Button datum_aendern) {
+        this.datum_aendern = datum_aendern;
+    }
+
+    public Button getKundenid_aendern() {
+        return kundenid_aendern;
+    }
+
+    public void setKundenid_aendern(Button kundenid_aendern) {
+        this.kundenid_aendern = kundenid_aendern;
+    }
+
+    public Button getPid_aendern() {
+        return pid_aendern;
+    }
+
+    public void setPid_aendern(Button pid_aendern) {
+        this.pid_aendern = pid_aendern;
+    }
+
+    public Button getService_aendern() {
+        return service_aendern;
+    }
+
+    public void setService_aendern(Button service_aendern) {
+        this.service_aendern = service_aendern;
+    }
+
+    public Button getZahlmethod_aendern() {
+        return zahlmethod_aendern;
+    }
+
+    public void setZahlmethod_aendern(Button zahlmethod_aendern) {
+        this.zahlmethod_aendern = zahlmethod_aendern;
+    }
+
+    @FXML
+    private Button datum_aendern;
+    @FXML
+    private Button kundenid_aendern;
+    @FXML
+    private Button pid_aendern;
+
+    @FXML
+    private Button service_aendern;
+    @FXML
+    private Button zahlmethod_aendern;
+
+    public void setLöschen(Button löschen) {
+        this.löschen = löschen;
+    }
+
+    public void setRefreshimg(ImageView refreshimg) {
+        this.refreshimg = refreshimg;
+    }
+
+    public Button getLöschen() {
+        return löschen;
+    }
+
+    public ImageView getRefreshimg() {
+        return refreshimg;
+    }
+
+    public Button getBackhomepage() {
+        return backhomepage;
+    }
+
+    @FXML
+    private ImageView refreshimg;
 
     @FXML
     private TextField verkaufidfield;
@@ -40,19 +154,15 @@ public class produktVerkaufenController implements Initializable {
     private Button backhomepage;
 
     @FXML
-    private Button backhomepage1;
+    private Button speichernVerkauf;
 
-    @FXML
-    private Button backhomepage2;
+    public Button getSpeichernVerkauf() {
+        return speichernVerkauf;
+    }
 
-    @FXML
-    private Button backhomepage3;
-
-    @FXML
-    private Button backhomepage4;
-
-    @FXML
-    private Button backhomepage5;
+    public void setSpeichernVerkauf(Button speichernVerkauf) {
+        this.speichernVerkauf = speichernVerkauf;
+    }
 
     @FXML
     private TableColumn<Produkt_Verkaufen,String> datumcol;
@@ -108,26 +218,6 @@ public class produktVerkaufenController implements Initializable {
 
     public void setBackhomepage(Button backhomepage) {
         this.backhomepage = backhomepage;
-    }
-
-    public void setBackhomepage1(Button backhomepage1) {
-        this.backhomepage1 = backhomepage1;
-    }
-
-    public void setBackhomepage2(Button backhomepage2) {
-        this.backhomepage2 = backhomepage2;
-    }
-
-    public void setBackhomepage3(Button backhomepage3) {
-        this.backhomepage3 = backhomepage3;
-    }
-
-    public void setBackhomepage4(Button backhomepage4) {
-        this.backhomepage4 = backhomepage4;
-    }
-
-    public void setBackhomepage5(Button backhomepage5) {
-        this.backhomepage5 = backhomepage5;
     }
 
     public void setDatumcol(TableColumn<Produkt_Verkaufen, String> datumcol) {
@@ -196,30 +286,6 @@ public class produktVerkaufenController implements Initializable {
 
     public Button getAktualisiereList() {
         return aktualisiereList;
-    }
-
-    public Button getBackhomepage() {
-        return backhomepage;
-    }
-
-    public Button getBackhomepage1() {
-        return backhomepage1;
-    }
-
-    public Button getBackhomepage2() {
-        return backhomepage2;
-    }
-
-    public Button getBackhomepage3() {
-        return backhomepage3;
-    }
-
-    public Button getBackhomepage4() {
-        return backhomepage4;
-    }
-
-    public Button getBackhomepage5() {
-        return backhomepage5;
     }
 
     public TableColumn<Produkt_Verkaufen, String> getDatumcol() {
@@ -295,7 +361,163 @@ public class produktVerkaufenController implements Initializable {
         stage.show();
 
     }
+    public void refreshTable(ActionEvent event) throws IOException {
+        root= FXMLLoader.load((getClass().getResource("produktVerkaufen.fxml")));
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
+    ObservableList<Produkt> produkts;
+    ObservableList<Kunde> kunden;
+    @FXML
+    void speichernVerkauf(ActionEvent event) {
+        DatabaseConnection connection=new DatabaseConnection();
+        int kundenID= Integer.parseInt(kundenıdfield.getText());
+        int verkaufID=Integer.parseInt(verkaufidfield.getText());
+        int produktID=Integer.parseInt(produktidfield.getText());
+        produktController pc=new produktController();
+        //pc.getProduktlist().setItems(produkts);
+        produkts=connection.getDataprodukts();
+        kunden=connection.getDatakunden();
+        Produkt produkt=new Produkt(produktID);
+        Kunde  kunde=new Kunde(kundenID);
+        /*
+        if(kunden.contains(kunde)==false){
+            keineprodukLabel.setText("Es gibt keine Kunde mit diese ID-Nummer");
+        }
+
+         */
+        if(produkts.contains(produkt)==false){
+            keineprodukLabel.setText("Dieser Produkt ist nicht vorrätig!");
+        }
+        else{
+            connection.löscheProduktFromDB(produktID);
+            String service = " ";
+            if(jacb.isSelected()){
+                service=jacb.getText();
+            }else if(neincb.isSelected()){
+                service=neincb.getText();
+            }
+            Produkt_Verkaufen produkt_verkaufen=new Produkt_Verkaufen(Integer.parseInt(verkaufidfield.getText()),Integer.parseInt(kundenıdfield.getText()), Integer.parseInt(produktidfield.getText()),zahlmethodfield.getSelectionModel().getSelectedItem(),datumfield.getText(),service);
+            connection.addVerkaufToDB(produkt_verkaufen);
+        }
+
+
+    }
+
+
+
+    @FXML
+    void löschenVerkauf(ActionEvent event) {
+        int id=produktverkaufentable.getSelectionModel().getSelectedItem().getId();
+        DatabaseConnection conn= new DatabaseConnection();
+        conn.löscheVerkaufFromDB(id);
+        produktverkaufentable.getItems().removeAll(produktverkaufentable.getSelectionModel().getSelectedItem());
+
+    }
+    @FXML
+    void aktualisiereDatum(ActionEvent event) {
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.aktualisiereDatumDB(datumfield.getText(),Integer.parseInt(verkaufidfield.getText()));
+    }
+
+    @FXML
+    void aktualisiereKundenID(ActionEvent event) {
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.aktualisiereKundenidDB(Integer.parseInt(kundenıdfield.getText()),Integer.parseInt(verkaufidfield.getText()));
+    }
+
+    @FXML
+    void aktualisierePID(ActionEvent event) {
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.aktualisierePIDDB(Integer.parseInt(produktidfield.getText()),Integer.parseInt(verkaufidfield.getText()));
+    }
+
+    @FXML
+    void aktualisiereService(ActionEvent event) {
+        DatabaseConnection connection = new DatabaseConnection();
+        String service = " ";
+        if(jacb.isSelected()){
+            service=jacb.getText();
+        }else if (neincb.isSelected()){
+            service=neincb.getText();
+        }
+        connection.aktualisiereServiceDB(service,Integer.parseInt(verkaufidfield.getText()));
+    }
+
+    @FXML
+    void aktualisiereZahlmethod(ActionEvent event){
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.aktualisiereZahlmethodDB(zahlmethodfield.getSelectionModel().getSelectedItem(),Integer.parseInt(verkaufidfield.getText()));
+    }
+
+    ObservableList<Produkt_Verkaufen> dataList;
+
+    public ObservableList<Produkt_Verkaufen> getDataList() {
+        return dataList;
+    }
+
+    public void setDataList(ObservableList<Produkt_Verkaufen> dataList) {
+        this.dataList = dataList;
+    }
+    @FXML
+    private TextField filterfield;
+
+    public TextField getFilterfield() {
+        return filterfield;
+    }
+
+    public void setFilterfield(TextField filterfield) {
+        this.filterfield = filterfield;
+    }
+    @FXML
+    public void search_verkauf(){
+        DatabaseConnection connection=new DatabaseConnection();
+
+        idcol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        kidcol.setCellValueFactory(new PropertyValueFactory<>("kunden_id"));
+        pidcol.setCellValueFactory(new PropertyValueFactory<>("produkt_id"));
+        zahlmethodcol.setCellValueFactory(new PropertyValueFactory<>("zahlmethode"));
+        datumcol.setCellValueFactory(new PropertyValueFactory<>("datum"));
+        servicecol.setCellValueFactory(new PropertyValueFactory<>("service"));
+
+        dataList=connection.getDataPV();
+        //personallist.setItems(dataList);
+        FilteredList<Produkt_Verkaufen> filteredData=new FilteredList<>(dataList, b ->true);
+
+        filterfield.textProperty().addListener((observable,oldValue,newValue ) ->{
+            filteredData.setPredicate(produkt_verkaufen -> {
+                if (newValue==null || newValue.isEmpty()){
+                    return true;
+                }
+                String lowerCaseFilter=newValue.toLowerCase();
+
+                if (String.valueOf(produkt_verkaufen.getKunden_id()).toLowerCase().indexOf(lowerCaseFilter)!= -1){
+                    return true;
+                }else if (String.valueOf(produkt_verkaufen.getProdukt_id()).toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                    return true;
+                }
+
+                else if (produkt_verkaufen.getDatum().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            });
+        });
+        SortedList<Produkt_Verkaufen> sortedData=new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(produktverkaufentable.comparatorProperty());
+
+        produktverkaufentable.setItems(sortedData);
+
+
+
+
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         zahlmethodfield.getItems().addAll("kredit kart","barzahlung");
@@ -309,5 +531,13 @@ public class produktVerkaufenController implements Initializable {
 
         DatabaseConnection connection = new DatabaseConnection();
         produktverkaufentable.setItems(connection.getDataPV());
+
+        File file1=new File(("C:\\Users\\Eylül\\IdeaProjects\\demo\\src\\main\\java\\com\\example\\demo\\indir-removebg-preview.png"));
+        Image image1=new Image(file1.toURI().toString());
+        refreshimg.setImage(image1);
+
+        search_verkauf();
     }
+
+
 }

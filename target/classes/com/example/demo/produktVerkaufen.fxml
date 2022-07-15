@@ -14,62 +14,122 @@
 
 <AnchorPane prefHeight="490.0" prefWidth="844.0" style="-fx-background-color: #4a84c2;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.produktVerkaufenController">
    <children>
-      <Label layoutX="14.0" layoutY="14.0" text="Produkt Verkauf-Informationen" textFill="WHITE">
+      <Label layoutX="22.0" layoutY="14.0" text="Produkt Verkauf-Informationsseite" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="produktverkaufentable" layoutX="422.0" layoutY="47.0" prefHeight="395.0" prefWidth="406.0">
+      <TableView fx:id="produktverkaufentable" layoutX="419.0" layoutY="47.0" prefHeight="395.0" prefWidth="415.0">
         <columns>
-          <TableColumn fx:id="idcol" prefWidth="31.0" text="ID" />
-          <TableColumn fx:id="kidcol" prefWidth="71.0" text="Kunden ID" />
-            <TableColumn fx:id="pidcol" prefWidth="66.0" text="Produkt ID" />
-            <TableColumn fx:id="zahlmethodcol" prefWidth="107.0" text="Zahlungsmethod" />
-            <TableColumn fx:id="datumcol" prefWidth="77.0" text="Datum" />
-            <TableColumn fx:id="servicecol" prefWidth="52.0" text="Service" />
+          <TableColumn fx:id="idcol" prefWidth="45.0" text="ID" />
+          <TableColumn fx:id="kidcol" prefWidth="66.0" text="Kunden ID" />
+            <TableColumn fx:id="pidcol" prefWidth="71.0" text="Produkt ID" />
+            <TableColumn fx:id="zahlmethodcol" prefWidth="112.0" text="Zahlungsmethod" />
+            <TableColumn fx:id="datumcol" prefWidth="64.0" text="Datum" />
+            <TableColumn fx:id="servicecol" prefWidth="55.0" text="Service" />
         </columns>
       </TableView>
-      <Button fx:id="aktualisiereList" layoutX="704.0" layoutY="451.0" mnemonicParsing="false" onAction="#aktualisierePVList" text="Aktualisieren der List" />
-      <Button fx:id="backhomepage4" layoutX="225.0" layoutY="76.0" mnemonicParsing="false" onAction="#switchToHomepage" prefHeight="30.0" prefWidth="154.0" text="Kunden ID eingeben">
+      <Button fx:id="aktualisiereList" layoutX="631.0" layoutY="453.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="30.0" prefWidth="205.0" text="      Aktualisieren der List">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Button fx:id="backhomepage" layoutX="14.0" layoutY="449.0" mnemonicParsing="false" onAction="#switchToHomepage" prefHeight="30.0" prefWidth="95.0" text="Zurück ">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="backhomepage3" layoutX="225.0" layoutY="132.0" mnemonicParsing="false" onAction="#switchToHomepage" prefHeight="30.0" prefWidth="154.0" text="Produkt ID eingeben">
+      <Button fx:id="speichernVerkauf" layoutX="116.0" layoutY="449.0" mnemonicParsing="false" onAction="#speichernVerkauf" prefHeight="30.0" prefWidth="95.0" text="Addieren">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="backhomepage2" layoutX="225.0" layoutY="191.0" mnemonicParsing="false" onAction="#switchToHomepage" prefHeight="30.0" prefWidth="154.0" text="Zahlungsmethod waehlen">
+      <TextField fx:id="kundenıdfield" layoutX="141.0" layoutY="144.0" prefHeight="25.0" prefWidth="190.0" />
+      <TextField fx:id="produktidfield" layoutX="141.0" layoutY="201.0" prefHeight="25.0" prefWidth="190.0" />
+      <TextField fx:id="datumfield" layoutX="141.0" layoutY="309.0" prefHeight="25.0" prefWidth="190.0" />
+      <ComboBox fx:id="zahlmethodfield" layoutX="141.0" layoutY="254.0" prefHeight="25.0" prefWidth="190.0" />
+      <CheckBox fx:id="jacb" layoutX="148.0" layoutY="361.0" mnemonicParsing="false" text="Ja" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="backhomepage1" layoutX="225.0" layoutY="247.0" mnemonicParsing="false" onAction="#switchToHomepage" prefHeight="30.0" prefWidth="154.0" text="      Datum eingeben">
+            <Font size="13.0" />
+         </font></CheckBox>
+      <CheckBox fx:id="neincb" layoutX="279.0" layoutY="361.0" mnemonicParsing="false" text="Nein" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="backhomepage" layoutX="14.0" layoutY="449.0" mnemonicParsing="false" onAction="#switchToHomepage" prefHeight="30.0" prefWidth="154.0" text="Zurück ">
+            <Font size="13.0" />
+         </font></CheckBox>
+      <TextField fx:id="verkaufidfield" layoutX="141.0" layoutY="86.0" prefHeight="25.0" prefWidth="190.0" />
+      <Label layoutX="4.0" layoutY="88.0" text=" Verkauf ID:" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
-      </Button>
-      <Button fx:id="backhomepage5" layoutX="225.0" layoutY="300.0" mnemonicParsing="false" onAction="#switchToHomepage" prefHeight="30.0" prefWidth="154.0" text="Servicestatus eingeben">
+      </Label>
+      <Label layoutX="8.0" layoutY="146.0" text="Kunden ID:" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
-      </Button>
-      <TextField fx:id="kundenıdfield" layoutX="14.0" layoutY="78.0" prefHeight="25.0" prefWidth="197.0" />
-      <TextField fx:id="produktidfield" layoutX="14.0" layoutY="135.0" prefHeight="25.0" prefWidth="197.0" />
-      <TextField fx:id="datumfield" layoutX="14.0" layoutY="249.0" prefHeight="25.0" prefWidth="197.0" />
-      <ComboBox fx:id="zahlmethodfield" layoutX="14.0" layoutY="193.0" prefHeight="25.0" prefWidth="197.0" />
-      <CheckBox fx:id="jacb" layoutX="22.0" layoutY="307.0" mnemonicParsing="false" text="Ja" textFill="WHITE" />
-      <CheckBox fx:id="neincb" layoutX="138.0" layoutY="306.0" mnemonicParsing="false" text="Nein" textFill="WHITE" />
-      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="232.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+      </Label>
+      <Label layoutX="14.0" layoutY="203.0" text="Produkt ID:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="11.0" layoutY="256.0" text="Zahlungsmethod:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="11.0" layoutY="311.0" text="Datum:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="10.0" layoutY="359.0" text="Service:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="refreshimg" fitHeight="35.0" fitWidth="39.0" layoutX="631.0" layoutY="451.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/com/example/demo/time-and-date-icon-11549792838b97dvthvmd-removebg-preview.png" />
+            <Image url="@../../../../java/com/example/demo/indir-removebg-preview.png" />
          </image>
       </ImageView>
+      <Button fx:id="löschen" layoutX="526.0" layoutY="453.0" mnemonicParsing="false" onAction="#löschenVerkauf" prefHeight="30.0" prefWidth="95.0" text="Löschen">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="datum_aendern" layoutX="340.0" layoutY="308.0" mnemonicParsing="false" onAction="#aktualisiereDatum" prefHeight="27.0" prefWidth="72.0" text="Aendern">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="zahlmethod_aendern" layoutX="340.0" layoutY="253.0" mnemonicParsing="false" onAction="#aktualisiereZahlmethod" prefHeight="27.0" prefWidth="72.0" text="Aendern">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="pid_aendern" layoutX="340.0" layoutY="200.0" mnemonicParsing="false" onAction="#aktualisierePID" prefHeight="27.0" prefWidth="72.0" text="Aendern">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="kundenid_aendern" layoutX="340.0" layoutY="143.0" mnemonicParsing="false" onAction="#aktualisiereKundenID" prefHeight="27.0" prefWidth="72.0" text="Aendern">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="service_aendern" layoutX="340.0" layoutY="356.0" mnemonicParsing="false" onAction="#aktualisiereService" prefHeight="27.0" prefWidth="72.0" text="Aendern">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <TextField fx:id="filterfield" layoutX="416.0" layoutY="455.0" prefHeight="27.0" prefWidth="101.0" promptText="Suche">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Label fx:id="keineprodukLabel" layoutX="49.0" layoutY="403.0" prefHeight="17.0" prefWidth="293.0" textFill="#f84646">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

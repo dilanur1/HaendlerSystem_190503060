@@ -35,9 +35,17 @@ public class HomepageController implements Initializable {
     private Label anzahlvonkunde;
 
     public void anzahlVonProdukt(ActionEvent event){
+
+        
+        anzahlvonprodukt.setText("3");
+        produktController p=new produktController();
+        anzahlvonprodukt.setText(String.valueOf(p.getArrayListpid()));
+        /*
         DatabaseConnection connection=new DatabaseConnection();
         connection.sizeProduktDB();
         anzahlvonprodukt.setText("3");
+
+         */
     }
 
     public void anzahlVonPersonal(ActionEvent event){
@@ -45,7 +53,7 @@ public class HomepageController implements Initializable {
     }
 
     public void anzahlVonKunde(ActionEvent event){
-
+            DatabaseConnection connection=new DatabaseConnection();
     }
 
 
@@ -79,13 +87,15 @@ public class HomepageController implements Initializable {
         stage.show();
 
     }
-    public void switchToEinstellung(ActionEvent event) throws IOException {
+    /*public void switchToEinstellung(ActionEvent event) throws IOException {
         root= FXMLLoader.load((getClass().getResource("einstellung.fxml")));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
+     */
     public void switchToPV(ActionEvent event) throws IOException {
         root= FXMLLoader.load((getClass().getResource("produktVerkaufen.fxml")));
 
@@ -94,9 +104,31 @@ public class HomepageController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    public void switchToService(ActionEvent event) throws IOException{
+        root= FXMLLoader.load((getClass().getResource("service.fxml")));
 
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
+    @FXML
+    void Ausloggen(ActionEvent event) throws IOException{
+        root= FXMLLoader.load((getClass().getResource("login.fxml")));
 
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        /*
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        System.out.println("Sie sind erfolgreich ausloggen!");
+        stage.close();
+
+         */
+
+    }
 
     @FXML
     private ImageView imageView1;
@@ -113,35 +145,7 @@ public class HomepageController implements Initializable {
 
 
 
-/*
-    @FXML
-    private ComboBox cbprodukt;
-    public ComboBox getCbprodukt() {
-        return cbprodukt;
-    }
-    @FXML
-    private ComboBox cbpersonal;
-    public ComboBox getCbpersonal() {
-        return cbpersonal;
-    }
-    @FXML
-    private ComboBox cbkunde;
-    public ComboBox getCbkunde() {
-        return cbkunde;
-    }
-    @FXML
-    private ComboBox cbeinstellung;
 
-
-    public ComboBox getCbeinstellung() {
-        return cbeinstellung;
-    }
-    /*
-    private String[] produktSec={"Produkt hinzufügen","Produkt löschen","Produkte aktuailisieren"};
-    private String[] personalSec={"Personal hinzufügen","Personal löschen","Personal aktuailisieren"};
-    private String[] kundeSec={"Kunde hinzufügen","Kunde löschen","Kunde aktuailisieren"};
-    private String[] einstellungSec={""};
-    */
     ObservableList<Personal> listM;
     int index=-1;
     Connection conn=null;
@@ -150,16 +154,6 @@ public class HomepageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /*
-        cbpersonal.setItems(FXCollections.observableArrayList("Personal hinzufügen","Personal löschen","Personal aktuailisieren"));
-        cbkunde.setItems(FXCollections.observableArrayList("Kunde hinzufügen","Kunde löschen","Kunde aktuailisieren"));
-        cbprodukt.setItems(FXCollections.observableArrayList("Produkt hinzufügen","Produkt löschen","Produkte aktuailisieren"));
-*/
-/*
-        cbpersonal.getItems().addAll("Personal hinzufügen","Personal löschen","Personal aktuailisieren","Personalen listen");
-        cbkunde.getItems().addAll("Kunde hinzufügen","Kunde löschen","Kunde aktuailisieren","Personalen listen");
-        cbprodukt.getItems().addAll("Produkt hinzufügen","Produkt löschen","Produkte aktuailisieren","Personalen listen");
-*/
 
         File file1=new File(("C:\\Users\\Eylül\\IdeaProjects\\demo\\src\\main\\java\\com\\example\\demo\\2022-05-13 (11).png"));
         Image image1=new Image(file1.toURI().toString());

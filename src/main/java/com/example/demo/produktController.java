@@ -2,6 +2,8 @@ package com.example.demo;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,6 +20,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -216,8 +220,17 @@ public class produktController implements Initializable {
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
+        System.out.println("size:"+produktlist.getItems().size());
+        System.out.println("deneme: "+produktlist.getItems().get(1).getPid());
     }
 
+    ArrayList<Integer> pid=new ArrayList<>();
+    public Integer getArrayListpid(){
+        for(int i=0;i<produktlist.getItems().size();i++){
+            pid.add(produktlist.getItems().get(i).getPid());
+        }
+        return pid.size();
+    }
 
     //produkt güncelleme formunu açar
     public void produktAktualisiereForm(ActionEvent event){
@@ -236,6 +249,70 @@ public class produktController implements Initializable {
         int id=produktlist.getSelectionModel().getSelectedItem().getPid();
         DatabaseConnection conn= new DatabaseConnection();
         conn.löscheProduktFromDB(id);
+        produktlist.getItems().removeAll(produktlist.getSelectionModel().getSelectedItem());
+    }
+    ObservableList<Produkt> dataList;
+    public ObservableList<Produkt> getDataList() {
+        return dataList;
+    }
+    public void setDataList(ObservableList<Produkt> dataList) {
+        this.dataList = dataList;
+    }
+    @FXML
+    private TextField filterfield;
+
+    public TextField getFilterfield() {
+        return filterfield;
+    }
+
+    public void setFilterfield(TextField filterfield) {
+        this.filterfield = filterfield;
+    }
+
+    @FXML
+    public void search_produkt(){
+        DatabaseConnection connection=new DatabaseConnection();
+
+        col_prıd.setCellValueFactory(new PropertyValueFactory<>("pid"));
+        preis.setCellValueFactory(new PropertyValueFactory<>("preis"));
+        kategorie.setCellValueFactory(new PropertyValueFactory<>("kategorie"));
+        garantiezeit.setCellValueFactory(new PropertyValueFactory<>("garantiezeit"));
+        model.setCellValueFactory(new PropertyValueFactory<>("modell"));
+        lagerbestand.setCellValueFactory(new PropertyValueFactory<>("lagerbestand"));
+        hohe.setCellValueFactory(new PropertyValueFactory<>("hohe"));
+        breite.setCellValueFactory(new PropertyValueFactory<>("breite"));
+        lange.setCellValueFactory(new PropertyValueFactory<>("lange"));
+        colverkaufid.setCellValueFactory(new PropertyValueFactory<>("pvid"));
+
+        ObservableList dataList = connection.getDataprodukts();
+        //produktlist.setItems(dataList);
+
+        FilteredList<Produkt> filteredData=new FilteredList<>(dataList, b ->true);
+
+        filterfield.textProperty().addListener((observable,oldValue,newValue ) ->{
+            filteredData.setPredicate(produkt -> {
+                if (newValue==null || newValue.isEmpty()){
+                    return true;
+                }
+                String lowerCaseFilter=newValue.toLowerCase();
+               if (produkt.getKategorie().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                    return true;
+                }
+                else if (produkt.getLagerbestand().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                    return true;
+                }
+                else if (String.valueOf(produkt.getPreis()).toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            });
+        });
+        SortedList<Produkt> sortedData=new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(produktlist.comparatorProperty());
+        produktlist.setItems(sortedData);
+
     }
 
 
@@ -261,5 +338,7 @@ public class produktController implements Initializable {
 
         DatabaseConnection connection=new DatabaseConnection();
         produktlist.setItems(connection.getDataprodukts());
+
+        search_produkt();
     }
 }

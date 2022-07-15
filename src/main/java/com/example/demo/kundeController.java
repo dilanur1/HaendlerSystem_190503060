@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -63,11 +67,14 @@ public class kundeController implements Initializable {
     }
 
     public void refreshKundeTable(ActionEvent event) throws IOException {
+        //System.out.println(kundenlist.fixedCellSizeProperty());
         root= FXMLLoader.load((getClass().getResource("kunde.fxml")));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+
     }
 
     public void kundeAdd(ActionEvent event){
@@ -214,17 +221,76 @@ public class kundeController implements Initializable {
     }
 
     public void löscheVonKundeList(ActionEvent event){
-        kundenlist.getItems().removeAll(kundenlist.getSelectionModel().getSelectedItem());
         //System.out.println(produktlist.getSelectionModel().getSelectedItem().getPid());
         //DatabaseConnection conn= (DatabaseConnection) DatabaseConnection.getConnection();
         int id=kundenlist.getSelectionModel().getSelectedItem().getKundenid();
         //String sql="delete from personal where id_nummer=" +id;
         DatabaseConnection conn= new DatabaseConnection();
         conn.löscheKundeFromDB(id);
+        kundenlist.getItems().removeAll(kundenlist.getSelectionModel().getSelectedItem());
+
     }
 
+    ObservableList<Kunde> dataList;
+    public ObservableList<Kunde> getDataList() {
+        return dataList;
+    }
+    public void setDataList(ObservableList<Kunde> dataList) {
+        this.dataList = dataList;
+    }
+    @FXML
+    private TextField filterfield;
 
+    public TextField getFilterfield() {
+        return filterfield;
+    }
 
+    public void setFilterfield(TextField filterfield) {
+        this.filterfield = filterfield;
+    }
+
+    @FXML
+    public void search_kunde(){
+        DatabaseConnection connection=new DatabaseConnection();
+
+        col_id.setCellValueFactory(new PropertyValueFactory<>("idNummer"));
+        col_kvorname.setCellValueFactory(new PropertyValueFactory<>("vorname"));
+        col_knachname.setCellValueFactory(new PropertyValueFactory<>("nachname"));
+        col_kgbdatum.setCellValueFactory(new PropertyValueFactory<>("geburtsdatum"));
+        col_kgeschlecht.setCellValueFactory(new PropertyValueFactory<>("geschlecht"));
+        col_kadress.setCellValueFactory(new PropertyValueFactory<>("adress"));
+        col_ktel.setCellValueFactory(new PropertyValueFactory<>("telefonnummer"));
+        col_kid.setCellValueFactory(new PropertyValueFactory<>("kundenid"));
+        col_pvid.setCellValueFactory(new PropertyValueFactory<>("pvid"));
+
+        ObservableList dataList = connection.getDatakunden();
+        kundenlist.setItems(dataList);
+        FilteredList<Kunde> filteredData=new FilteredList<>(dataList, b ->true);
+
+        filterfield.textProperty().addListener((observable,oldValue,newValue ) ->{
+            filteredData.setPredicate(kunde -> {
+                if (newValue==null || newValue.isEmpty()){
+                    return true;
+                }
+                String lowerCaseFilter=newValue.toLowerCase();
+                if (kunde.getName().toLowerCase().indexOf(lowerCaseFilter)!= -1){
+                    return true;
+                }else if (kunde.getIdNummer().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                    return true;
+                }
+                else if (kunde.getAdress().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            });
+        });
+        SortedList<Kunde> sortedData=new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(kundenlist.comparatorProperty());
+        kundenlist.setItems(sortedData);
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -244,6 +310,9 @@ public class kundeController implements Initializable {
 
         DatabaseConnection connection=new DatabaseConnection();
         kundenlist.setItems(connection.getDatakunden());
+        search_kunde();
+
+
     }
 
 

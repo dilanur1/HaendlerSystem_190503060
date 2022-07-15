@@ -9,6 +9,9 @@ public class Person {
     private String  adress;
     private String telefonnummer;
 
+    public Person() {
+    }
+
     public Person(String idnummer, String vorname, String nachname, String gbdatum, String adress, String telno) {
         this.idNummer = idnummer;
         this.vorname = vorname;

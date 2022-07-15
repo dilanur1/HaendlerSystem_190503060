@@ -18,17 +18,12 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="11.0" layoutY="265.0" mnemonicParsing="false" onAction="#switchToProdukt" prefHeight="25.0" prefWidth="158.0" text="Produkt">
+            <Button layoutX="12.0" layoutY="258.0" mnemonicParsing="false" onAction="#switchToProdukt" prefHeight="25.0" prefWidth="158.0" text="Produkt">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="12.0" layoutY="314.0" mnemonicParsing="false" onAction="#switchToKunde" prefHeight="25.0" prefWidth="158.0" text="Kunde">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button layoutX="11.0" layoutY="446.0" mnemonicParsing="false" onAction="#switchToEinstellung" prefHeight="25.0" prefWidth="158.0" text="Einstellungen">
+            <Button layoutX="11.0" layoutY="301.0" mnemonicParsing="false" onAction="#switchToKunde" prefHeight="25.0" prefWidth="158.0" text="Kunde">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -38,7 +33,17 @@
                   <Image url="@../../../../java/com/example/demo/2022-05-13%20(11).png" />
                </image>
             </ImageView>
-            <Button layoutX="12.0" layoutY="359.0" mnemonicParsing="false" onAction="#switchToPV" prefHeight="25.0" prefWidth="158.0" text="Produkt verkaufen">
+            <Button layoutX="12.0" layoutY="345.0" mnemonicParsing="false" onAction="#switchToPV" prefHeight="25.0" prefWidth="158.0" text="Verkauf">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="12.0" layoutY="386.0" mnemonicParsing="false" onAction="#switchToService" prefHeight="25.0" prefWidth="158.0" text="Service">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="14.0" layoutY="446.0" mnemonicParsing="false" onAction="#Ausloggen" prefHeight="24.0" prefWidth="153.0" text="Ausloggen">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -56,21 +61,6 @@
             <Image url="@../../../../java/com/example/demo/homepage-icon-8.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="212.0" layoutY="152.0" mnemonicParsing="false" onAction="#anzahlVonProdukt" prefHeight="25.0" prefWidth="173.0" text="Aktuelle Produktanzahl">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button layoutX="458.0" layoutY="152.0" mnemonicParsing="false" onAction="#anzahlVonPersonal" prefHeight="25.0" prefWidth="173.0" text="Aktuelle Personalanzahl">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button layoutX="212.0" layoutY="245.0" mnemonicParsing="false" onAction="#anzahlVonKunde" prefHeight="25.0" prefWidth="173.0" text="Aktuelle Kundezahl">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
       <Label fx:id="anzahlvonpersonal" layoutX="544.0" layoutY="196.0">
          <font>
             <Font size="13.0" />
@@ -86,5 +76,6 @@
             <Font size="13.0" />
          </font>
       </Label>
+      <Label fx:id="anzahlvonprodukt" layoutX="313.0" layoutY="180.0" />
    </children>
 </AnchorPane>

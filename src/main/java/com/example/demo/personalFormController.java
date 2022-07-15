@@ -179,82 +179,17 @@ public class personalFormController implements Initializable {
 
     public void speichern(ActionEvent event) throws IOException {
         DatabaseConnection connection=new DatabaseConnection();
-        connection.addPersonalsToDB(idnum_field.getText(),pvornamefield.getText(),
+        Personal personal=new Personal(idnum_field.getText(),pvornamefield.getText(),
                 pnachnamefield.getText(),pgbdatum_field.getText(),checkbox_frau.getText(),padres_field.getText(),ptelno_field.getText(),
                 Integer.parseInt(pid_field.getText()),benutzernamefield.getText(),passwortfield.getText());
+        connection.addPersonalsToDB(personal);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         System.out.println("Sie sind erfolgreich speichern!");
         stage.close();
 
     }
-        /*
-        Personal personal=new Personal(idnum_field.getText(),pvornamefield.getText(),
-                pnachnamefield.getText(),pgbdatum_field.getText(),checkbox_frau.getText(),padres_field.getText(),ptelno_field.getText(),
-                Integer.parseInt(pid_field.getText()),benutzernamefield.getText(),passwortfield.getText());
-        personalController p1=new personalController();
-        DatabaseConnection p=new DatabaseConnection();
-        ObservableList<Personal> personals= p.getDatausers();//personals =tablodaki veriler listesi
 
-
-        personals.add(personal);
-        p1.getPersonallist().setItems(personals);
-    }
-
-         */
-
-/*
-    @FXML
-    public void aktualiserePersonal(ActionEvent event,int pid,String idnummer,String vorname,String nachname,String benutzername,String pass,String gbdatum,String adresse,String telno){
-
-        pid_field.setId(String.valueOf(pid));
-        idnum_field.setText(idnummer);
-        pvornamefield.setText(vorname);
-        pnachnamefield.setText(nachname);
-        benutzernamefield.setText(benutzername);
-        passwortfield.setText(pass);
-        pgbdatum_field.setText(gbdatum);
-        padres_field.setText(adresse);
-        ptelno_field.setText(telno);
-
-
-
-    }
-
- */
-/*
-    @FXML
-    public void aktualiserePersonal(ActionEvent event)  {
-
-        connection=DatabaseConnection.getConnection();
-        String personal_id=pid_field.getText();
-        String id_nummer=idnum_field.getText();
-        String vorname=pvornamefield.getText();
-        String nachname=pnachnamefield.getText();
-        String benutzername=benutzernamefield.getText();
-        String passwort=passwortfield.getText();
-        String gbdatum=pgbdatum_field.getText();
-        String adresse=padres_field.getText();
-        String telno=ptelno_field.getText();
-
-    }
-
- */
-
-
-
-/*
-    String query=null;
-    Connection connection=null;
-    PreparedStatement preparedStatement=null;
-    Personal personal=null;
-    ResultSet resultSet=null;
-    private boolean update=false;
-    private int personalid;
-
-
-
- */
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

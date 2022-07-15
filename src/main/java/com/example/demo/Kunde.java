@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.Date;
 public class Kunde extends Person {
     private int kundenid;
-    private ArrayList<Personal> betreuendePersonal = new ArrayList();
+    //private ArrayList<Personal> betreuendePersonal = new ArrayList();
     private int pvid;
-    private ArrayList<Produkt> einkaufteProdukt = new ArrayList();
+    //private ArrayList<Integer> einkaufteProdukt = new ArrayList();
 
     public Kunde(String idNummer, String vorname, String nachname, String geburtsdatum,String geschlecht,String adresse,String telefonnummer,int kundenid,int pvid) {
         super(idNummer, vorname, nachname,geburtsdatum,geschlecht,adresse,telefonnummer);
         this.kundenid = kundenid;
         this.pvid=pvid;
+    }
+
+    public Kunde(int kundenID) {
+        super();
+        this.kundenid=kundenID;
     }
 /*
     public Kunde(String idnummer, String vorname, String nachname, String gbdatum, String adress, String telno) {
@@ -21,11 +26,9 @@ public class Kunde extends Person {
  */
 
 
-    public void setBetreuendePersonal(ArrayList<Personal> betreuendePersonal) {
-        this.betreuendePersonal = betreuendePersonal;
-    }
 
-    public void setZ(int pvid) {
+
+    public void getPvid(int pvid) {
         this.pvid=pvid;
     }
 
@@ -34,23 +37,14 @@ public class Kunde extends Person {
 
     }
 
-    public void setEinkaufteProdukt(ArrayList<Produkt> einkaufteProdukt) {
-        this.einkaufteProdukt = einkaufteProdukt;
-    }
+
 
     public int getKundenid() {
         return kundenid;
     }
 
-    public ArrayList<Personal> getBetreuendePersonal() {
-        return betreuendePersonal;
-    }
 
-    public ArrayList<Produkt> getEinkaufteProdukt() {
-        return einkaufteProdukt;
-    }
-
-    public int getZ() {
+    public int getPvid() {
         return pvid;
     }
 

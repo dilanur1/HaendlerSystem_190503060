@@ -4,13 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="490.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.kundeController">
+<AnchorPane prefHeight="490.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.kundeController">
    <children>
       <Pane prefHeight="490.0" prefWidth="181.0" style="-fx-background-color: #4a84c2;">
          <children>
@@ -29,7 +30,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="personal_aktual" layoutX="13.0" layoutY="319.0" mnemonicParsing="false" onAction="#kundeAktualisiereForm" prefHeight="25.0" prefWidth="153.0" text="Edieren">
+            <Button fx:id="personal_aktual" layoutX="13.0" layoutY="319.0" mnemonicParsing="false" onAction="#kundeAktualisiereForm" prefHeight="25.0" prefWidth="153.0" text="Aktualisieren">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -39,6 +40,11 @@
                   <Image url="@../../../../java/com/example/demo/2022-05-13%20(11).png" />
                </image>
             </ImageView>
+            <TextField fx:id="filterfield" layoutX="13.0" layoutY="368.0" prefHeight="25.0" prefWidth="153.0" promptText="Suche">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
          </children>
       </Pane>
       <Label layoutX="198.0" layoutY="30.0" text="Kunden List">
@@ -46,7 +52,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="kundenlist" layoutX="194.0" layoutY="72.0" prefHeight="369.0" prefWidth="639.0">
+      <TableView fx:id="kundenlist" layoutX="194.0" layoutY="72.0" prefHeight="369.0" prefWidth="586.0">
         <columns>
           <TableColumn fx:id="col_id" prefWidth="82.0" text="ID-Nummer" />
           <TableColumn fx:id="col_kvorname" prefWidth="63.0" text="Vorname" />
@@ -56,7 +62,7 @@
             <TableColumn fx:id="col_kadress" prefWidth="69.0" text="Adress" />
             <TableColumn fx:id="col_ktel" prefWidth="68.0" text="Telefon" />
             <TableColumn fx:id="col_kid" prefWidth="69.0" text="Kundenid" />
-            <TableColumn fx:id="col_pvid" prefWidth="53.0" text="PV-ID" />
+            <TableColumn fx:id="col_pvid" minWidth="0.0" prefWidth="0.0" text="PV-ID" />
         </columns>
       </TableView>
       <Button layoutX="194.0" layoutY="452.0" mnemonicParsing="false" onAction="#refreshKundeTable" prefHeight="24.0" prefWidth="153.0" text="Aktualisiere der List">

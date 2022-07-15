@@ -169,7 +169,8 @@ public class produktFormController implements Initializable {
 
     public void speichern(ActionEvent event) throws IOException {
         DatabaseConnection connection=new DatabaseConnection();
-        connection.addProduktsToDB(Integer.parseInt(proıdtxt.getText()),Double.parseDouble(preis_txt.getText()), cbox_kategorie.getSelectionModel().getSelectedItem(),Integer.parseInt(garantiezeit_txt.getText()),modell_txt.getText(),cb_ja.getText(), Double.parseDouble(lange_txt.getText()),Double.parseDouble(breite_txt.getText()),Double.parseDouble(höhe_txt.getText()),Integer.parseInt(verkaufid_txt.getText()));
+        Produkt produkt=new Produkt(Integer.parseInt(proıdtxt.getText()),Double.parseDouble(preis_txt.getText()), cbox_kategorie.getSelectionModel().getSelectedItem(),Integer.parseInt(garantiezeit_txt.getText()),modell_txt.getText(),cb_ja.getText(), Double.parseDouble(lange_txt.getText()),Double.parseDouble(breite_txt.getText()),Double.parseDouble(höhe_txt.getText()),Integer.parseInt(verkaufid_txt.getText()));
+        connection.addProduktsToDB(produkt);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         System.out.println("Sie sind erfolgreich speichern!");
